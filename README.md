@@ -14,4 +14,4 @@ A responsive web application built with **Bootstrap 5** and **JavaScript** to ma
 - **Responsive Layout:** Mobile-first design using the Bootstrap grid.
 
 ---
-*Created by Raeh Espino | CpE Student Researcher*
+*Created by Espino, Raeh Manart H. | Future Netwok Administrator*
