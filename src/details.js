@@ -7,23 +7,43 @@ import { characters } from './data/characters.js';
 const params = new URLSearchParams(window.location.search);
 const charId = params.get('id');
 const character = characters.find(c => c.id === charId);
+const rarityContainer = document.getElementById('char-rarity');
+
+if (rarityContainer && character.rarity) {
+    // 2. Generate stars based on the character's rarity number (e.g., 5)
+    rarityContainer.innerHTML = Array(Number(character.rarity))
+        .fill(0)
+        .map(() => `<img src="/assets/ui/icons/rarity-star.webp" class="rarity-star" alt="Star">`)
+        .join('');
+}
 
 // The Guard: Only run if we found a valid character
 if (character && document.getElementById('details-body')) {
     
     // Initial Setup
     document.getElementById('details-body').style.backgroundImage = `url('/characters/${charId}/bg.webp')`;
-    document.getElementById('char-name').innerText = character.name;
-    document.getElementById('char-title').innerText = character.title;
-    document.getElementById('char-lore').innerText = character.lore;
+    const nameElem = document.getElementById('char-name');
+    const titleElem = document.getElementById('char-title');
+    const loreElem = document.getElementById('char-lore');
     document.getElementById('char-role').innerText = character.role;
     document.getElementById('char-region').innerText = character.region;
+    document.getElementById('char-element-display').innerText = character.element;
+    document.getElementById('char-weapon-display').innerText = character.weapon;
+
+    if (nameElem) nameElem.innerText = character.name;
+    if (titleElem) titleElem.innerText = character.title;
+    if (loreElem) loreElem.innerText = character.lore;
 
     // Set Role/Region Icons from the Global Assets folder
     const roleSlug = character.role.toLowerCase().replace(/\s+/g, '-');
     const regionSlug = character.region.toLowerCase();
+    const elementSlug = character.element.toLowerCase();
+    const weaponSlug = character.weapon.toLowerCase().replace(/\s+/g, '-');
+
     document.getElementById('role-icon').src = `/assets/ui/icons/role-${roleSlug}.webp`;
     document.getElementById('region-icon').src = `/assets/ui/icons/region-${regionSlug}.webp`;
+    document.getElementById('element-icon').src = `/assets/ui/icons/element-${elementSlug}.webp`;
+    document.getElementById('weapon-icon').src = `/assets/ui/icons/weapon-${weaponSlug}.webp`;
 
     // 2. Inject Ability Icons (Vertical Stack)
     const iconContainer = document.getElementById('ability-icons');

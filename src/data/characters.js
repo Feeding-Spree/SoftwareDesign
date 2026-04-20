@@ -75,7 +75,7 @@ export const characters = [
 
               Paramita Papilio ends when its duration is over, or Hu Tao has left the battlefield or fallen.`, 
         
-        previews: ["skill-charge", "skill-detonate", "skill-hold", "skill-normal", "skill-plunge", "skill-slash"]},
+        previews: ["skill-charge", "skill", "skill-effect"]},
         
       { id: "burst", name: "Spirit Soother", desc: `Commands a blazing spirit to attack, dealing Pyro DMG in a large AoE.
       Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP. This effect can be triggered up to 5 times, based on the number of enemies hit.
@@ -85,5 +85,49 @@ export const characters = [
       { id: "ascension-4", name: "Sanguine Rouge", desc: "When Hu Tao's HP is equal to or less than 50%, her Pyro DMG Bonus is increased by 33%.", previews: []},
       { id: "utility", name: "The More the Merrier", desc: "When Hu Tao cooks a dish perfectly, she has a 18% chance to receive an additional \"Suspicious\" dish of the same type.", previews: []}
     ]
-  }
+  },
+  {
+    id: "clorinde",
+    name: "Clorinde",
+    title: "Candlebearer, Shadowhunter",
+    rarity: 5,
+    version: "4.7",
+    element: "Electro",
+    weapon: "Sword",
+    region: "Fontaine",
+    role: "Main DPS",
+    unlocked: true,
+    lore: `The mightiest Champion Duelist. Sword in hand, she defends justice in the Court of Fontaine.`,
+    abilities: [
+      { id: "normal", 
+        name: "Oath of Hunting Shadows", 
+        desc: "Normal Attack: \n Performs up to 5 rapid strikes. \n\n Charged Attack: \n Consumes a certain amount of Stamina to unleash 2 rapid sword strikes. \n\n Plunging Attack: \n Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.", previews: ["normal", "normal-charge", "normal-plunge"]},
+      { id: "skill", name: "Hunter's Vigil", 
+        desc: `Preparing her pistolet, she enters the "Night Vigil" state, using steel and shot together. In this state, Clorinde's Normal Attacks will be transformed into "Swift Hunt" pistolet attacks, and the DMG dealt is converted into Electro DMG that cannot be overridden by infusions, and she will be unable to use Charged Attacks. Using her Elemental Skill will transform it into "Impale the Night": Perform a lunging attack, dealing Electro DMG. The DMG done through the aforementioned method is considered Normal Attack DMG.
+
+        Swift Hunt
+        When her Bond of Life is equal to or greater than 100% of her max HP: Performs a pistolet shot.
+        When her Bond of Life is less than 100%, firing her pistolet will grant her Bond of Life, with the amount gained based on her max HP. The shots she fires can pierce opponents, and DMG dealt to opponents in their path is increased.
+
+        Impale the Night
+        The current percentage value of Clorinde's Bond of Life determines its effect:
+        When the Bond of Life value is 0%, perform a normal lunging strike;
+        When the Bond of Life value is less than 100% of her max HP, Clorinde is healed based on the Bond of Life value, and the AoE of the lunging attack and the DMG dealt is increased;
+        When the value of the Bond of Life is equal to or greater than 100% of her max HP, use Impale the Night: Pact. The healing multiplier is increased, and the AoE and DMG dealt by the lunge is increased even further.
+
+        In addition, when Clorinde is in the Night Vigil state, healing effects other than Impale the Night will not take effect and will instead be converted into a Bond of Life that is a percentage of the healing that would have been received.
+
+        Clorinde will exit the "Night Vigil" state when she leaves the field.
+
+        Arkhe: Ousia
+        Periodically, when Clorinde's Swift Hunt shots strike opponents, she will summon a Surging Blade at the position hit that deals Ousia-aligned Electro DMG.`, 
+        
+        previews: ["skill-charge", "skill-detonate", "skill-hold", "skill-normal", "skill-plunge", "skill-slash"]},
+        
+      { id: "burst", name: "Starward Sword", desc: "Keqing unleashes the power of lightning, dealing Electro DMG in an AOE. She then blends into the shadow of her blade, striking a series of thunderclap-blows to nearby opponents simultaneously that deal multiple instances of Electro DMG. The final attack deals massive AoE Electro DMG.", previews: ["burst"] },
+      { id: "ascension-1", name: "Thundering Penance", desc: "After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an Electro Infusion for 5s.", previews: []},
+      { id: "ascension-4", name: "Aristocratic Dignity", desc: "When casting Starward Sword, Keqing's CRIT Rate is increased by 15%, and her Energy Recharge is increased by 15%. This effect lasts for 8s.", previews: []},
+      { id: "utility", name: "Land's Overseer", desc: "When dispatched on an expedition in Liyue, time consumed is reduced by 25%.", previews: []}
+    ]
+  },
 ];

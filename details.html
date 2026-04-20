@@ -16,11 +16,14 @@
         </a>
       </div>
 
-      <h5 id="char-title"></h5>
-      <h1 id="char-name"></h1>
-      <p id="char-lore"></p>
+      <div class="col-lg-7 hero-content">
+        <div id="char-rarity" class="d-flex gap-1 mb-2"></div>
+        <h1 id="char-name" class="mb-3"></h1>
+        <h2 id="char-title" class="text-gold tracking-widest mb-2 italic"></h2>
+        <p id="char-lore" class="mb-5"></p>
+      </div>
 
-            <div class="d-flex gap-4 mt-5">
+      <div class="d-flex gap-4 mt-5 flex-wrap">
         <div class="info-box">
           <img id="role-icon" class="info-icon" alt="Role">
           <div class="info-text">
@@ -34,6 +37,22 @@
           <div class="info-text">
             <span class="label">REGION</span>
             <span id="char-region" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="element-icon" class="info-icon" alt="Element">
+          <div class="info-text">
+            <span class="label">ELEMENT</span>
+            <span id="char-element-display" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="weapon-icon" class="info-icon" alt="Weapon">
+          <div class="info-text">
+            <span class="label">WEAPON</span>
+            <span id="char-weapon-display" class="value"></span>
           </div>
         </div>
       </div>

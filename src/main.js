@@ -17,25 +17,25 @@ const activeFilters = {
    ============================================================ */
 const renderGrid = () => {
     const grid = document.getElementById('character-grid');
-    
-    // Guard Clause: Stop if the grid isn't found (e.g., on the details page)
     if (!grid) return;
 
-    // A. Apply cumulative filters
     const filteredList = characters.filter(char => {
         const matchElement = activeFilters.element === 'all' || char.element === activeFilters.element;
         const matchWeapon = activeFilters.weapon === 'all' || char.weapon === activeFilters.weapon;
         const matchRarity = activeFilters.rarity === 'all' || char.rarity.toString() === activeFilters.rarity;
         const matchVersion = activeFilters.version === 'all' || char.version === activeFilters.version;
-
         return matchElement && matchWeapon && matchRarity && matchVersion;
     });
 
-    // B. Map data to HTML
+    // Inside the grid.innerHTML mapping in main.js
     grid.innerHTML = filteredList.map(char => {
         const lockedClass = char.unlocked ? '' : 'locked';
-        // If locked, the link points to # (nowhere), otherwise it goes to details
         const linkPath = char.unlocked ? `details.html?id=${char.id}` : '#';
+
+        // Generate rarity stars
+        const rarityStars = Array(Number(char.rarity)).fill(0).map(() => 
+            `<img src="/assets/ui/icons/rarity-star.webp" class="rarity-star-sm" alt="Star">`
+        ).join('');
 
         return `
             <div class="col-6 col-md-4 col-lg-3">
@@ -45,8 +45,11 @@ const renderGrid = () => {
                         <img src="/characters/${char.id}/card.webp" class="card-img" alt="${char.name}">
                         
                         <div class="card-info">
-                            <span class="card-element">${char.element}</span>
                             <h3 class="card-name">${char.name}</h3>
+                            
+                            <div class="card-rarity-row mt-1">
+                                ${rarityStars}
+                            </div>
                         </div>
 
                         ${!char.unlocked ? `
@@ -62,7 +65,6 @@ const renderGrid = () => {
         `;
     }).join('');
 
-    // C. Empty State: Show message if no characters match filters
     if (filteredList.length === 0) {
         grid.innerHTML = `
             <div class="col-12 text-center py-5">
@@ -74,31 +76,19 @@ const renderGrid = () => {
 };
 
 /* ============================================================
-   3. GLOBAL CONTROLLERS (Exposed to Window for HTML)
+   3. GLOBAL CONTROLLERS
    ============================================================ */
-
-/**
- * Updates the filter state and triggers a re-render
- */
 window.updateFilter = (category, value) => {
     activeFilters[category] = value;
     renderGrid();
 };
 
-/**
- * Clears all filters back to 'all'
- */
 window.resetFilters = () => {
     activeFilters.element = 'all';
     activeFilters.weapon = 'all';
     activeFilters.rarity = 'all';
     activeFilters.version = 'all';
-
-    // Reset all dropdowns in the UI back to their first option
-    document.querySelectorAll('.custom-select').forEach(select => {
-        select.selectedIndex = 0;
-    });
-
+    document.querySelectorAll('.custom-select').forEach(select => select.selectedIndex = 0);
     renderGrid();
 };
 
