@@ -1,62 +1,110 @@
+import './assets/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-import './style.css'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import { setupCounter } from './counter.js'
+import { characters } from './data/characters.js';
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src=${viteLogo} class="vite" alt="Vite logo" />
-  </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+/* ============================================================
+   1. FILTER STATE
+   ============================================================ */
+const activeFilters = {
+    element: 'all',
+    weapon: 'all',
+    rarity: 'all',
+    version: 'all'
+};
 
-<div class="ticks"></div>
+/* ============================================================
+   2. RENDERING ENGINE
+   ============================================================ */
+const renderGrid = () => {
+    const grid = document.getElementById('character-grid');
+    
+    // Guard Clause: Stop if the grid isn't found (e.g., on the details page)
+    if (!grid) return;
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src=${viteLogo} alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
+    // A. Apply cumulative filters
+    const filteredList = characters.filter(char => {
+        const matchElement = activeFilters.element === 'all' || char.element === activeFilters.element;
+        const matchWeapon = activeFilters.weapon === 'all' || char.weapon === activeFilters.weapon;
+        const matchRarity = activeFilters.rarity === 'all' || char.rarity.toString() === activeFilters.rarity;
+        const matchVersion = activeFilters.version === 'all' || char.version === activeFilters.version;
 
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
+        return matchElement && matchWeapon && matchRarity && matchVersion;
+    });
 
-setupCounter(document.querySelector('#counter'))
+    // B. Map data to HTML
+    grid.innerHTML = filteredList.map(char => {
+        const lockedClass = char.unlocked ? '' : 'locked';
+        // If locked, the link points to # (nowhere), otherwise it goes to details
+        const linkPath = char.unlocked ? `details.html?id=${char.id}` : '#';
+
+        return `
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="${linkPath}" class="character-card-link">
+                    <div class="character-card card-${char.element.toLowerCase()} ${lockedClass}">
+                        
+                        <img src="/characters/${char.id}/card.webp" class="card-img" alt="${char.name}">
+                        
+                        <div class="card-info">
+                            <span class="card-element">${char.element}</span>
+                            <h3 class="card-name">${char.name}</h3>
+                        </div>
+
+                        ${!char.unlocked ? `
+                            <div class="lock-overlay">
+                                <span class="lock-icon">🔒</span>
+                            </div>
+                        ` : ''}
+
+                        <div class="card-overlay"></div>
+                    </div>
+                </a>
+            </div>
+        `;
+    }).join('');
+
+    // C. Empty State: Show message if no characters match filters
+    if (filteredList.length === 0) {
+        grid.innerHTML = `
+            <div class="col-12 text-center py-5">
+                <p class="text-gold opacity-50 italic">No characters match the selected criteria.</p>
+                <button class="filter-btn" onclick="window.resetFilters()">RESET FILTERS</button>
+            </div>
+        `;
+    }
+};
+
+/* ============================================================
+   3. GLOBAL CONTROLLERS (Exposed to Window for HTML)
+   ============================================================ */
+
+/**
+ * Updates the filter state and triggers a re-render
+ */
+window.updateFilter = (category, value) => {
+    activeFilters[category] = value;
+    renderGrid();
+};
+
+/**
+ * Clears all filters back to 'all'
+ */
+window.resetFilters = () => {
+    activeFilters.element = 'all';
+    activeFilters.weapon = 'all';
+    activeFilters.rarity = 'all';
+    activeFilters.version = 'all';
+
+    // Reset all dropdowns in the UI back to their first option
+    document.querySelectorAll('.custom-select').forEach(select => {
+        select.selectedIndex = 0;
+    });
+
+    renderGrid();
+};
+
+/* ============================================================
+   4. INITIALIZATION
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    renderGrid();
+});

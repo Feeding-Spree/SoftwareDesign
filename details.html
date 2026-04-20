@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Details | The Oasis</title>
+</head>
+<body id="details-body" class="details-page">
+
+  <section class="hero-section container">
+    <div class="hero-content w-100">
+      
+      <div class="mb-5">
+        <a href="index.html" class="back-link">
+          <span class="arrow">←</span> BACK TO ARCHIVE
+        </a>
+      </div>
+
+      <h5 id="char-title"></h5>
+      <h1 id="char-name"></h1>
+      <p id="char-lore"></p>
+
+            <div class="d-flex gap-4 mt-5">
+        <div class="info-box">
+          <img id="role-icon" class="info-icon" alt="Role">
+          <div class="info-text">
+            <span class="label">ROLE</span>
+            <span id="char-role" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="region-icon" class="info-icon" alt="Region">
+          <div class="info-text">
+            <span class="label">REGION</span>
+            <span id="char-region" class="value"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abilities-section">
+    <div class="container-fluid px-5">
+      <div class="row g-5">
+        
+        <div class="col-md-5">
+          <h2 class="section-title italic mb-5 fw-bold text-uppercase">Abilities</h2>
+          <div class="d-flex gap-5">
+            <div id="ability-icons" class="d-flex flex-column gap-3"></div>
+            <div class="ability-text-container flex-grow-1">
+              <h3 id="current-ability-name" class="italic fw-bold text-uppercase"></h3>
+              <p id="current-ability-desc"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-7">
+          <div class="preview-frame ratio ratio-16x9">
+            <div id="ability-preview-container" class="h-100 w-100"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script type="module" src="/src/details.js"></script>
+</body>
+</html>

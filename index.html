@@ -1,13 +1,62 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>genshin-library</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Akademiya | Archive</title>
+</head>
+<body class="archive-page">
+
+  <div class="container py-5">
+    <header class="text-center mb-5">
+      <h1 class="text-gold tracking-widest italic fw-bold">THE AKADEMIYA</h1>
+      <h3 class="archive-title">CHARACTERS</h3>
+    </header>
+
+    <div id="character-grid" class="row g-4 justify-content-center"></div>
+  </div>
+  
+  <div class="filter-bar container mb-5">
+  <div class="row g-3 justify-content-center">
+    
+    <div class="col-md-2">
+      <select class="form-select custom-select" onchange="updateFilter('element', this.value)">
+        <option value="all">ELEMENT: ALL</option>
+        <option value="Electro">ELECTRO</option>
+        <option value="Pyro">PYRO</option>
+        <option value="Hydro">HYDRO</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <select class="form-select custom-select" onchange="updateFilter('weapon', this.value)">
+        <option value="all">WEAPON: ALL</option>
+        <option value="Sword">SWORD</option>
+        <option value="Claymore">CLAYMORE</option>
+        <option value="Bow">BOW</option>
+        <option value="Polearm">POLEARM</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <select class="form-select custom-select" onchange="updateFilter('rarity', this.value)">
+        <option value="all">RARITY: ALL</option>
+        <option value="5">5-STAR</option>
+        <option value="4">4-STAR</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <select class="form-select custom-select" onchange="updateFilter('version', this.value)">
+        <option value="all">VERSION: ALL</option>
+        <option value="1.0">V1.0</option>
+        <option value="2.0">V2.0</option>
+        <option value="3.0">V3.0</option>
+      </select>
+    </div>
+
+  </div>
+</div>
+  <script type="module" src="/src/main.js"></script>
+</body>
 </html>
