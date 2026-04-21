@@ -1,0 +1,116 @@
+[id]: hu-tao
+[NAME]: Hu Tao
+[TITLE]: Spirit of the Eternal Flame
+[RARITY]: 5
+[VERSION]: 1.3
+[ELEMENT]: Pyro
+[WEAPON]: Polearm
+[REGION]: Liyue
+[ROLE]: Main DPS
+[UNLOCKED]: true
+[LORE]:
+Hu Tao is the 77th Director of the Wangsheng Funeral Parlor, a person vital to managing Liyue's funerary affairs.
+
+She does her utmost to flawlessly carry out a person's last rites and preserve the world's balance of yin and yang.
+
+Aside from this, she is also a talented poet whose many "masterpieces" have passed around Liyue's populace by word of mouth.
+[ABILITY_ID]: normal
+[ABILITY_NAME]: Secret Spear of Wangsheng
+[ABILITY_DESC]:
+ Performs up to 5 rapid strikes.
+
+ Charged Attack:
+ Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+ 
+ Plunging Attack:
+ Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: Guide to Afterlife
+[ABILITY_DESC]: 
+
+Only an unwavering flame can cleanse the impurities of this world.
+Hu Tao consumes a set portion of her HP to knock the surrounding enemies back and enter the Paramita Papilio state.
+
+Paramita Papilio
+Increases Hu Tao's ATK based on her Max HP at the time of entering this state. ATK Bonus gained this way cannot exceed 400% of Hu Tao's Base ATK.
+Converts attack DMG to Pyro DMG, which cannot be overridden by any other elemental infusion.
+Charged Attacks apply the Blood Blossom effect to the enemies hit.
+Increases Hu Tao's resistance to interruption.
+
+Blood Blossom
+Enemies affected by Blood Blossom will take Pyro DMG every 4s. This DMG is considered Elemental Skill DMG.
+Each enemy can be affected by only one Blood Blossom effect at a time, and its duration may only be refreshed by Hu Tao herself.
+
+Paramita Papilio ends when its duration is over, or Hu Tao has left the battlefield or fallen.
+
+[PREVIEWS]: skill-charge, skill, skill-effect
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: Spirit Soother
+[ABILITY_DESC]: 
+Commands a blazing spirit to attack, dealing Pyro DMG in a large AoE.
+
+Upon striking the enemy, regenerates a percentage of Hu Tao's Max HP. This effect can be triggered up to 5 times, based on the number of enemies hit.
+
+If Hu Tao's HP is below or equal to 50% when the enemy is hit, both the DMG and HP Regeneration are increased.
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: Flutter By
+[ABILITY_DESC]: 
+When a Paramita Papilio state activated by Guide to Afterlife ends, all allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by 12% for 8s.
+[PREVIEWS]: 
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]: Sanguine Rouge
+[ABILITY_DESC]: 
+
+When Hu Tao's HP is equal to or less than 50%, her Pyro DMG Bonus is increased by 33%.
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]: The More the Merrier
+[ABILITY_DESC]: 
+
+When Hu Tao cooks a dish perfectly, she has a 18% chance to receive an additional "Suspicious" dish of the same type.
+
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: Crimson Bouquet
+[CONST_DESC]: 
+While in a Paramita Papilio state activated by Guide to Afterlife, Hu Tao's Charged Attacks do not consume Stamina.
+
+[CONST]: const-2
+[CONST_NAME]: Ominous Rainfall
+[CONST_DESC]:
+Increases the Blood Blossom DMG by an amount equal to 10% of Hu Tao's Max HP at the time the effect is applied.
+Additionally, Spirit Soother will also apply the Blood Blossom effect.
+
+[CONST]: const-3
+[CONST_NAME]: Lingering Carmine
+[CONST_DESC]:
+Increases the Level of Guide to Afterlife by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-4
+[CONST_NAME]: Garden of Eternal Rest
+[CONST_DESC]:
+Upon defeating an enemy affected by a Blood Blossom that Hu Tao applied herself, all nearby allies in the party (excluding Hu Tao herself) will have their CRIT Rate increased by 12% for 15s.
+
+[CONST]: const-5
+[CONST_NAME]: Floral Incense
+[CONST_DESC]:
+Increases the Level of Spirit Soother by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-6
+[CONST_NAME]: Butterfly's Embrace
+[CONST_DESC]:
+Triggers when Hu Tao's HP drops below 25%, or when she suffers a lethal strike:
+Hu Tao will not fall as a result of the DMG sustained. Additionally, for the next 10s, all of her Elemental and Physical RES is increased by 200%, her CRIT Rate is increased by 100%, and her resistance to interruption is greatly increased.
+This effect triggers automatically when Hu Tao has 1 HP left.
+Can only occur once every 60s.

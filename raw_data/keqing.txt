@@ -1,0 +1,101 @@
+[id]: keqing
+[NAME]: Keqing
+[TITLE]: Driving Thunder
+[RARITY]: 5
+[VERSION]: 1.0
+[ELEMENT]: Electro
+[WEAPON]: Sword
+[REGION]: Liyue
+[ROLE]: Main DPS
+[UNLOCKED]: true
+[LORE]:
+The Yuheng of the Liyue Qixing. Keqing has much to say about Rex Lapis' unilateral approach to policymaking in Liyue ⁠— but in truth, gods admire skeptics such as her quite a lot. 
+
+She firmly believes that humanity's future should be determined by humans themselves, and that they can even do better than the archons and adepti have done for them. In order to prove this, she works harder than anyone else.
+
+[ABILITY_ID]: normal
+[ABILITY_NAME]: Yunlai Swordsmanship
+[ABILITY_DESC]:
+ Performs up to 5 rapid strikes.
+
+ Charged Attack:
+ Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+ 
+ Plunging Attack:
+ Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: Stellar Restoration
+[ABILITY_DESC]: 
+
+Hurls a Lightning Stiletto that annihilates her opponents like the swift thunder. When the Stiletto hits its target, it deals Electro DMG to opponents in a small AoE, and places a Stiletto Mark on the spot hit. 
+
+Hold 
+Hold to adjust the direction in which the Stiletto shall be thrown. Stilettos thrown by the Hold attack mode can be suspended in mid-air, allowing Keqing to jump to them when using Stellar Restoration a second time. 
+
+Lightning Stiletto 
+If Keqing uses Stellar Restoration again or uses a Charged Attack while its duration lasts, it will clear the Stiletto Mark and produce different effects: 
+
+If she uses Stellar Restoration again, she will blink to the location of the Mark and unleash one slashing attack that deals AoE Electro DMG. 
+When blinking to a Stiletto that was thrown from a Holding attack, Keqing can leap across obstructing terrain. 
+If Keqing uses a Charged Attack, she will ignite a series of thundering cuts at the Mark's location, dealing AoE Electro DMG.
+[PREVIEWS]: skill-charge, skill-detonate, skill-hold, skill-normal, skill-plunge, skill-slash
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: Starward Sword
+[ABILITY_DESC]: 
+Keqing unleashes the power of lightning, dealing Electro DMG in an AOE. She then blends into the shadow of her blade, striking a series of thunderclap-blows to nearby opponents simultaneously that deal multiple instances of Electro DMG. The final attack deals massive AoE Electro DMG.
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: Thundering Penance
+[ABILITY_DESC]: 
+After recasting Stellar Restoration while a Lightning Stiletto is present, Keqing's weapon gains an Electro Infusion for 5s.
+[PREVIEWS]: 
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]:  Aristocratic Dignity
+[ABILITY_DESC]: 
+When casting Starward Sword, Keqing's CRIT Rate is increased by 15%, and her Energy Recharge is increased by 15%. This effect lasts for 8s.
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]:  Land's Overseer
+[ABILITY_DESC]: 
+When dispatched on an expedition in Liyue, time consumed is reduced by 25%.
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: Thundering Might
+[CONST_DESC]: 
+Recasting Stellar Restoration while a Lightning Stiletto is present causes Keqing to deal 50% of her ATK as AoE Electro DMG at the start point and terminus of her Blink.
+
+[CONST]: const-2
+[CONST_NAME]: Keen Extraction
+[CONST_DESC]:
+When Keqing's Normal and Charged Attacks hit opponents affected by Electro, they have a 50% chance of producing an Elemental Particle.
+This effect can only occur once every 5s.
+
+[CONST]: const-3
+[CONST_NAME]: Foreseen Reformation
+[CONST_DESC]:
+Increases the Level of Starward Sword by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-4
+[CONST_NAME]: Attunement
+[CONST_DESC]:
+For 10s after Keqing triggers an Electro-related Elemental Reaction, her ATK is increased by 25%.
+
+[CONST]: const-5
+[CONST_NAME]: Beckoning Stars
+[CONST_DESC]:
+Increases the Level of Stellar Restoration by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-6
+[CONST_NAME]: Tenacious Star
+[CONST_DESC]:
+When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a 6% Electro DMG Bonus for 8s.
+Effects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities.

@@ -1,0 +1,94 @@
+[id]: 
+[NAME]: 
+[TITLE]: 
+[RARITY]: 
+[VERSION]:
+[ELEMENT]: 
+[WEAPON]:  
+[REGION]: 
+[ROLE]: 
+[UNLOCKED]: 
+[LORE]:
+
+
+
+[ABILITY_ID]: normal
+[ABILITY_NAME]: 
+[ABILITY_DESC]:
+ Performs up to 5 rapid strikes.
+
+ Charged Attack:
+ Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.
+ 
+ Plunging Attack:
+ Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: 
+[ABILITY_DESC]: 
+
+
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: 
+[ABILITY_DESC]: 
+
+
+
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: 
+[ABILITY_DESC]: 
+
+
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]: 
+[ABILITY_DESC]: 
+
+
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]: 
+[ABILITY_DESC]: 
+
+
+
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: 
+[CONST_DESC]: 
+
+
+[CONST]: const-2
+[CONST_NAME]: 
+[CONST_DESC]:
+
+
+[CONST]: const-3
+[CONST_NAME]: 
+[CONST_DESC]:
+
+
+[CONST]: const-4
+[CONST_NAME]: 
+[CONST_DESC]:
+
+
+[CONST]: const-5
+[CONST_NAME]: 
+[CONST_DESC]:
+
+
+[CONST]: const-6
+[CONST_NAME]: 
+[CONST_DESC]:

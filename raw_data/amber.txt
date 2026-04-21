@@ -1,0 +1,111 @@
+[id]: amber
+[NAME]: Amber
+[TITLE]: Gliding Champion
+[RARITY]: 4
+[VERSION]: 1.0
+[ELEMENT]: Pyro
+[WEAPON]: Bow
+[REGION]: Mondstadt
+[ROLE]: Sub-DPS
+[UNLOCKED]: true
+[LORE]:
+
+A perky, straightforward girl, who is also the only Outrider of the Knights of Favonius. Her amazing mastery of the glider has made her a three-time winner of the Gliding Championship in Mondstadt. As a rising star within the Knights of Favonius, Amber is always ready for any challenging tasks.
+
+[ABILITY_ID]: normal
+[ABILITY_NAME]: Sharpshooter
+[ABILITY_DESC]:
+Normal Attack
+Performs up to 5 consecutive shots with a bow.
+
+Charged Attack
+Perform a more precise Aimed Shot with increased DMG.
+While aiming, flames will accumulate on the arrowhead. A fully charged flaming arrow will deal Pyro DMG.
+
+Plunging Attack
+Fires off a shower of arrows in mid-air before falling and striking the ground, dealing AoE DMG upon impact.
+
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: Explosive Puppet
+[ABILITY_DESC]: 
+
+The ever-reliable Baron Bunny takes the stage.
+
+Baron Bunny
+Continuously taunts the enemy, drawing their fire.
+Baron Bunny's HP scales with Amber's Max HP.
+When destroyed or when its timer expires, Baron Bunny explodes, dealing AoE Pyro DMG.
+
+Hold
+Adjusts the throwing direction of Baron Bunny.
+The longer the button is held, the further the throw.
+
+[PREVIEWS]: skill-press, skill-hold
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: Fiery Rain
+[ABILITY_DESC]: 
+
+Fires off a shower of arrows, dealing continuous AoE Pyro DMG.
+
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: Every Arrow Finds Its Target
+[ABILITY_DESC]: 
+
+Increases the CRIT Rate of Fiery Rain by 10% and widens its AoE by 30%.
+
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]: Precise Shot
+[ABILITY_DESC]: 
+
+Aimed Shot hits on weak spots increase ATK by 15% for 10s
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]: Gliding Champion
+[ABILITY_DESC]: 
+
+Decreases gliding Stamina consumption for your own party members by 20%.
+Not stackable with Passive Talents that provide the exact same effects.
+
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: One Arrow to Rule Them All
+[CONST_DESC]: 
+Fires 2 arrows per Aimed Shot. The second arrow deals 20% of the first arrow's DMG.
+
+[CONST]: const-2
+[CONST_NAME]: Bunny Triggered
+[CONST_DESC]:
+Baron Bunny, new and improved! Hitting Baron Bunny's foot with a fully-charged Aimed Shot manually detonates it.
+Explosion via manual detonation deals 200% additional DMG.
+
+[CONST]: const-3
+[CONST_NAME]: It Burns!
+[CONST_DESC]:
+Increases the Level of Fiery Rain by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-4
+[CONST_NAME]: It's Not Just Any Doll...
+[CONST_DESC]:
+Decreases Explosive Puppet's CD by 20%. Adds 1 additional charge.
+
+[CONST]: const-5
+[CONST_NAME]: It's Baron Bunny!
+[CONST_DESC]:
+Increases the Level of Explosive Puppet by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-6
+[CONST_NAME]: Wildfire
+[CONST_DESC]:
+Fiery Rain increases all party members' Movement SPD by 15% and ATK by 15% for 10s.
