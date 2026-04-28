@@ -7,15 +7,6 @@ import { characters } from './data/characters.js';
 const params = new URLSearchParams(window.location.search);
 const charId = params.get('id');
 const character = characters.find(c => c.id === charId);
-const rarityContainer = document.getElementById('char-rarity');
-
-if (rarityContainer && character.rarity) {
-    // 2. Generate stars based on the character's rarity number (e.g., 5)
-    rarityContainer.innerHTML = Array(Number(character.rarity))
-        .fill(0)
-        .map(() => `<img src="/assets/ui/icons/rarity-star.webp" class="rarity-star" alt="Star">`)
-        .join('');
-}
 
 // The Guard: Only run if we found a valid character
 if (character && document.getElementById('details-body')) {
