@@ -125,46 +125,43 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%) !important;
   }
 
+/* ============================================================
+    CONSTELLATION LINE COLORS
+   ============================================================ */
+
+.theme-electro { --el-color: rgba(148, 95, 177, 0.9); --el-glow: rgba(148, 95, 177, 0.2); }
+.theme-pyro    { --el-color: rgba(239, 64, 53, 0.9);  --el-glow: rgba(239, 64, 53, 0.2); }
+.theme-hydro   { --el-color: rgba(0, 177, 255, 0.9);  --el-glow: rgba(0, 177, 255, 0.2); }
+.theme-anemo   { --el-color: rgba(0, 255, 150, 0.9);  --el-glow: rgba(0, 255, 150, 0.2); }
+.theme-cryo    { --el-color: rgba(150, 230, 255, 0.9); --el-glow: rgba(150, 230, 255, 0.2); }
+.theme-geo     { --el-color: rgba(255, 180, 0, 0.9);   --el-glow: rgba(255, 180, 0, 0.2); }
+.theme-dendro  { --el-color: rgba(100, 255, 0, 0.9);   --el-glow: rgba(100, 255, 0, 0.2); }
+
   /* ============================================================
     ELEMENTAL GRADIENTS (The Floor)
     ============================================================ */
 
-  /* ELECTRO (Purple) */
   .archive-page .card-electro .card-info {
     background: linear-gradient(to top, rgba(148, 95, 177, 0.9) 0%, transparent 100%);
   }
-
-  /* PYRO (Red) */
   .archive-page .card-pyro .card-info {
     background: linear-gradient(to top, rgba(239, 64, 53, 0.9) 0%, transparent 100%);
   }
-
-  /* HYDRO (Deep Blue) */
   .archive-page .card-hydro .card-info {
     background: linear-gradient(to top, rgba(0, 177, 255, 0.9) 0%, transparent 100%);
   }
-
-  /* ANEMO (Teal/Green) */
   .archive-page .card-anemo .card-info {
     background: linear-gradient(to top, rgba(0, 255, 150, 0.9) 0%, transparent 100%);
   }
-
-  /* CRYO (Light Blue) */
   .archive-page .card-cryo .card-info {
     background: linear-gradient(to top, rgba(150, 230, 255, 0.9) 0%, transparent 100%);
   }
-
-  /* GEO (Gold/Yellow) */
   .archive-page .card-geo .card-info {
     background: linear-gradient(to top, rgba(255, 180, 0, 0.9) 0%, transparent 100%);
   }
-
-  /* DENDRO (Green) */
   .archive-page .card-dendro .card-info {
     background: linear-gradient(to top, rgba(100, 255, 0, 0.9) 0%, transparent 100%);
   }
-
-  /* FALLBACK (For locked or undefined characters) */
   .archive-page .character-card.locked .card-info {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%) !important;
     filter: grayscale(1);
@@ -399,7 +396,6 @@
     width: 28px; /* Scaled down for the card */
     height: 28px;
     object-fit: contain;
-    /* Adds a subtle gold glow to match the premium theme */
     filter: drop-shadow(0 0 4px rgba(200, 155, 60, 0.7));
 }
 
@@ -408,4 +404,188 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+/* ============================================================
+    TAB SYSTEM & MORPH
+   ============================================================ */
+.tab-link {
+  background: none; border: none; color: rgba(255, 255, 255, 0.4);
+  font-weight: 900; letter-spacing: 4px; padding-bottom: 12px;
+  transition: 0.3s; position: relative; text-transform: uppercase;
+}
+
+.tab-link.active { color: var(--el-color); }
+.tab-link.active::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; width: 100%;
+  height: 2px; background: var(--el-color); box-shadow: 0 0 15px var(--el-color);
+}
+
+#morph-container {
+  view-transition-name: tab-content-morph;
+}
+
+.details-page .ability-btn {
+  width: 52px; height: 52px; border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.5); opacity: 0.5; border-radius: 50%; transition: 0.3s;
+}
+
+.details-page .ability-btn.active {
+  opacity: 1 !important; border-color: var(--lol-gold);
+  box-shadow: 0 0 20px rgba(200, 155, 60, 0.4) !important;
+}
+
+/* ============================================================
+    CONSTELLATION SVG MAP
+   ============================================================ */
+.constellation-map-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #051a2e; /* Darker background to see the grid better */
+    cursor: crosshair; /* Changes cursor to a plus sign for precision */
+}
+
+.constellation-svg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    overflow: visible;
+}
+
+.constellation-svg image {
+    opacity: 1 !important;
+    filter: invert(1) grayscale(1) brightness(5) drop-shadow(0 0 1px #fff) drop-shadow(0 0 2px #fff) !important;
+}
+
+.constellation-svg circle {
+    opacity: 1 !important;
+    fill: var(--el-color) !important;
+    z-index: 9;
+}
+
+.constellation-lines line {
+    stroke: var(--el-color); stroke-width: 0.8; stroke-linecap: round;
+}
+
+.constellation-card {
+    transition: all 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.highlight-box {
+    border-color: var(--el-color) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 0 20px var(--el-glow), inset 0 0 10px var(--el-glow) !important;
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+.star-node { fill: #fff; }
+
+.star-glow {
+    fill: #ffffff; opacity: 100%;
+}
+
+/* ============================================================
+    DEBUG GRID
+   ============================================================ */
+   .debug-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through to the SVG */
+    z-index: 5;
+    /* This creates a 10x10 grid using CSS gradients */
+    background-size: 10% 10%;
+    background-image: 
+        linear-gradient(to right, rgba(200, 155, 60, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 155, 60, 0.1) 1px, transparent 1px);
+    border: 1px solid rgba(200, 155, 60, 0.3);
+}
+
+/* THE FLOATING COORDINATE LABEL */
+#coord-tracker {
+    position: fixed;
+    padding: 4px 8px;
+    background: var(--lol-gold);
+    color: var(--lol-blue);
+    font-size: 0.7rem;
+    font-weight: 900;
+    pointer-events: none;
+    z-index: 100;
+    border-radius: 2px;
+    display: none; /* Hidden by default, shown on hover */
+}
+
+.constellation-figure-img {
+    position: absolute;
+    width: 100%; 
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.5; /* Slightly higher opacity to see the target nodes better */
+    z-index: 1;
+}
+
+/* ============================================================
+    CONSTELLATION
+   ============================================================ */
+.const-node-icon {
+    pointer-events: auto;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.const-node-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Make sure the icons stay centered during scaling */
+.const-node-icon {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.node-circle {
+    transition: all 0.3s ease;
+}
+
+/* Active state for the node circle */
+.node-active {
+    fill: var(--el-color) !important;
+    filter: drop-shadow(0 0 8px var(--el-color));
+}
+
+.const-node-icon {
+    transition: filter 0.3s ease;
+}
+
+.const-node-icon.active {
+    filter: brightness(1.5) drop-shadow(0 0 5px var(--el-color));
+}
+
+.constellation-name-label {
+    text-shadow: 0 0 10px var(--element-glow);
+    transition: color 0.3s ease;
+}
+
+/* Optional: Make it change color when hovering over any node */
+.constellation-map-container:hover + div h4 {
+    color: var(--element-color);
+    opacity: 1;
+}
+
+.constellation-title {
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: var(--el-color) !important;
+    text-shadow: 0 0 15px var(--element-glow);
 }

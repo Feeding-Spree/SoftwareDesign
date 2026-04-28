@@ -4,59 +4,62 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Akademiya | Archive</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="archive-page">
 
   <div class="container py-5">
     <header class="text-center mb-5">
-      <h1 class="text-gold tracking-widest italic fw-bold">THE AKADEMIYA</h1>
+      <h1 class="text-gold tracking-widest italic fw-bold uppercase">THE OASIS</h1>
       <h3 class="archive-title">CHARACTERS</h3>
+
+      <div class="mt-4 d-flex justify-content-center">
+        <a href="wish.html" class="custom-select p-2 px-5 text-decoration-none d-inline-block" style="font-size: 1.1rem; border: 1px solid var(--lol-gold);">
+          ✨ GO TO SUMMON
+        </a>
+      </div>
     </header>
 
     <div id="character-grid" class="row g-4 justify-content-center"></div>
   </div>
   
   <div class="filter-bar container mb-5">
-  <div class="row g-3 justify-content-center">
-    
-    <div class="col-md-2">
-      <select class="form-select custom-select" onchange="updateFilter('element', this.value)">
-        <option value="all">ELEMENT: ALL</option>
-        <option value="Electro">ELECTRO</option>
-        <option value="Pyro">PYRO</option>
-        <option value="Hydro">HYDRO</option>
-      </select>
+    <div class="row g-3 justify-content-center">
+      <div class="col-md-2">
+        <select class="form-select custom-select" onchange="updateFilter('element', this.value)">
+          <option value="all">ELEMENT: ALL</option>
+          <option value="Electro">ELECTRO</option>
+          <option value="Pyro">PYRO</option>
+          <option value="Hydro">HYDRO</option>
+          <option value="Anemo">ANEMO</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select custom-select" onchange="updateFilter('weapon', this.value)">
+          <option value="all">WEAPON: ALL</option>
+          <option value="Sword">SWORD</option>
+          <option value="Polearm">POLEARM</option>
+          <option value="Bow">BOW</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select custom-select" onchange="updateFilter('rarity', this.value)">
+          <option value="all">RARITY: ALL</option>
+          <option value="5">5-STAR</option>
+          <option value="4">4-STAR</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select custom-select" onchange="updateFilter('version', this.value)">
+          <option value="all">VERSION: ALL</option>
+          <option value="1.0">V1.0</option>
+          <option value="4.6">V4.6</option>
+          <option value="4.7">V4.7</option>
+        </select>
+      </div>
     </div>
-
-    <div class="col-md-2">
-      <select class="form-select custom-select" onchange="updateFilter('weapon', this.value)">
-        <option value="all">WEAPON: ALL</option>
-        <option value="Sword">SWORD</option>
-        <option value="Claymore">CLAYMORE</option>
-        <option value="Bow">BOW</option>
-        <option value="Polearm">POLEARM</option>
-      </select>
-    </div>
-
-    <div class="col-md-2">
-      <select class="form-select custom-select" onchange="updateFilter('rarity', this.value)">
-        <option value="all">RARITY: ALL</option>
-        <option value="5">5-STAR</option>
-        <option value="4">4-STAR</option>
-      </select>
-    </div>
-
-    <div class="col-md-2">
-      <select class="form-select custom-select" onchange="updateFilter('version', this.value)">
-        <option value="all">VERSION: ALL</option>
-        <option value="1.0">V1.0</option>
-        <option value="2.0">V2.0</option>
-        <option value="3.0">V3.0</option>
-      </select>
-    </div>
-
   </div>
-</div>
+
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>

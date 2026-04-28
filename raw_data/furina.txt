@@ -1,17 +1,19 @@
-[id]: 
-[NAME]: 
-[TITLE]: 
-[CONSTELLATION_NAME]
-[RARITY]: 
-[VERSION]:
-[ELEMENT]: 
-[WEAPON]:  
-[REGION]: 
-[ROLE]: 
-[UNLOCKED]: 
+[id]: furina
+[NAME]: Furina
+[TITLE]: Endless Solo of Solitude
+[RARITY]: 5
+[VERSION]: 4.2
+[ELEMENT]: Hydro
+[WEAPON]:  Sword
+[REGION]: Fontaine
+[ROLE]: Sub-DPS
+[UNLOCKED]: false
 [LORE]:
 
+The "Regina of All Waters, Kindreds, Peoples and Laws" is deeply loved by her people.
+She follows each and every trial held at the Opera Epiclese with an inextinguishable passion, and is always acutely aware of how the "audience" sees things.
 
+The absolute focus of the stage of judgment, until the final applause sounds.
 
 [ABILITY_ID]: normal
 [ABILITY_NAME]: 
@@ -93,19 +95,3 @@
 [CONST]: const-6
 [CONST_NAME]: 
 [CONST_DESC]:
-
-
-[CONST_MAP]:
-            c1: [],
-            c2: [],
-            c3: [],
-            c4: [],
-            c5: [],
-            c6: []
-                 
-[CONST_CONNECTIONS]:
-            ["c1", "c2"],
-            ["c2", "c3"],
-            ["c3", "c4"],
-            ["c4", "c5"],
-            ["c5", "c6"]

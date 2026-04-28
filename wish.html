@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Akademiya | Summon</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="wish-page">
+
+  <div id="wish-container" class="position-relative vw-100 vh-100 overflow-hidden d-flex flex-column">
+    
+    <video id="wish-video" class="position-absolute top-0 start-0 w-100 h-100 d-none" 
+           playsinline muted style="object-fit: cover; z-index: 5;">
+        <source id="video-source" src="" type="video/mp4">
+    </video>
+
+    <div class="container py-4 position-relative" style="z-index: 20;">
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="index.html" class="back-link text-white text-decoration-none" style="letter-spacing: 2px; font-weight: bold;">
+          <span class="arrow">←</span> RETURN TO ARCHIVE
+        </a>
+        <div class="pity-display text-gold small italic fw-bold" style="letter-spacing: 1px;">
+           5★ PITY: <span id="pity-5">0</span> | 4★ PITY: <span id="pity-4">0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center position-relative">
+      <div id="summon-controls" class="text-center" style="z-index: 15;">
+        <h2 class="text-gold mb-4 italic tracking-widest opacity-75" style="font-size: 0.9rem;">AKADEMIYA SUMMONING SYSTEM</h2>
+        <div class="d-flex gap-3 justify-content-center">
+          <button id="summon-1-btn" class="custom-select p-3 px-5 fs-4" onclick="window.startWish(1)">✨ SUMMON x1</button>
+          <button id="summon-10-btn" class="custom-select p-3 px-5 fs-4" onclick="window.startWish(10)">✨ SUMMON x10</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="result-screen" class="result-screen d-none position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center" style="z-index: 100;">
+        <div class="result-content container px-4"></div>
+    </div>
+
+  </div>
+
+  <script type="module" src="/src/wish.js"></script>
+</body>
+</html>

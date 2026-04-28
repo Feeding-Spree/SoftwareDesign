@@ -1,6 +1,7 @@
 [id]: amber
 [NAME]: Amber
 [TITLE]: Gliding Champion
+[CONSTELLATION_NAME]: Lepus
 [RARITY]: 4
 [VERSION]: 1.0
 [ELEMENT]: Pyro
@@ -109,3 +110,18 @@ Maximum upgrade level is 15.
 [CONST_NAME]: Wildfire
 [CONST_DESC]:
 Fiery Rain increases all party members' Movement SPD by 15% and ATK by 15% for 10s.
+
+[CONST_MAP]:
+            c1: [19.5, 17],
+            c2: [23,4, 46.3],
+            c3: [61.1, 66.6],
+            c4: [59.3, 22.2],
+            c5: [81, 18],
+            c6: [72, 45]
+                 
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"]

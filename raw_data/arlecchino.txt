@@ -1,6 +1,7 @@
 [id]: arlecchino
 [NAME]: Arlecchino
 [TITLE]: Dire Balemoon
+[CONSTELLATION_NAME]: Ignis Purgatorius
 [RARITY]: 5
 [VERSION]: 4.6
 [ELEMENT]: Pyro
@@ -122,3 +123,18 @@ Maximum upgrade level is 15.
 
 The DMG of Balemoon Rising is increased by Arlecchino's ATK multiplied by 700% of Arlecchino's current Bond of Life percentage.
 For 20s after Arlecchino uses All Is Ash, both her Normal Attacks and Elemental Burst gain 10% increased CRIT Rate and 70% increased CRIT DMG. This effect can be triggered up to once every 15s.
+
+[CONST_MAP]:
+            c1: [],
+            c2: [],
+            c3: [],
+            c4: [],
+            c5: [],
+            c6: []
+                 
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"]

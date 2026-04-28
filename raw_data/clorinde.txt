@@ -1,6 +1,7 @@
 [id]: clorinde
 [NAME]: Clorinde
 [TITLE]: Candlebearer, Shadowhunter
+[CONSTELLATION_NAME]: Rapperia
 [RARITY]: 5
 [VERSION]: 4.7
 [ELEMENT]: Electro
@@ -123,3 +124,18 @@ When Clorinde uses Impale the Night: Pact.
 
 1 Glimbright Shade can be summoned in the aforementioned ways every 1s. 6 Shades can be summoned per single Night Vigil duration.
 In addition, while Night Vigil is active, the DMG Clorinde receives is decreased by 80% and her interruption resistance is increased. This effect will disappear after the Night Vigil state ends or 1s after she summons 6 Glimbright Shades.
+
+[CONST_MAP]:
+            c1: [49.7, 8],
+            c2: [49.7, 90],
+            c3: [31.5, 67.7],
+            c4: [67.6, 58.0],
+            c5: [38, 37],
+            c6: [61.1, 28.7]
+                 
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"]

@@ -3,6 +3,7 @@ export const characters = [
         id: "amber",
         name: "Amber",
         title: "Gliding Champion",
+        constellationName: "Lepus",
         rarity: 4,
         version: "1.0",
         element: "Pyro",
@@ -97,12 +98,48 @@ export const characters = [
                 name: "Wildfire",
                 desc: "Fiery Rain increases all party members' Movement SPD by 15% and ATK by 15% for 10s."
             }
+        ],
+        constellationMap: {
+            c1: [
+                19.5,
+                17
+            ],
+            c2: [
+                23,
+                4,
+                46.3
+            ],
+            c3: [
+                61.1,
+                66.6
+            ],
+            c4: [
+                59.3,
+                22.2
+            ],
+            c5: [
+                81,
+                18
+            ],
+            c6: [
+                72,
+                45
+            ]
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     },
     {
         id: "arlecchino",
         name: "Arlecchino",
         title: "Dire Balemoon",
+        constellationName: "Ignis Purgatorius",
         rarity: 5,
         version: "4.6",
         element: "Pyro",
@@ -197,12 +234,29 @@ export const characters = [
                 name: "\"From This Day On, We Shall Delight in New Life Together.\"",
                 desc: "The DMG of Balemoon Rising is increased by Arlecchino's ATK multiplied by 700% of Arlecchino's current Bond of Life percentage.\nFor 20s after Arlecchino uses All Is Ash, both her Normal Attacks and Elemental Burst gain 10% increased CRIT Rate and 70% increased CRIT DMG. This effect can be triggered up to once every 15s."
             }
+        ],
+        constellationMap: {
+            c1: [],
+            c2: [],
+            c3: [],
+            c4: [],
+            c5: [],
+            c6: []
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     },
     {
         id: "clorinde",
         name: "Clorinde",
         title: "Candlebearer, Shadowhunter",
+        constellationName: "Rapperia",
         rarity: 5,
         version: "4.7",
         element: "Electro",
@@ -299,12 +353,159 @@ export const characters = [
                 name: "\"And So Shall I Never Despair\"",
                 desc: "For 12s after Hunter's Vigil is used, Clorinde's CRIT Rate will be increased by 10%, and her CRIT DMG by 70%.\nAdditionally, while Night Vigil is active, a Glimbright Shade will appear under specific circumstances, executing an attack that deals 200% of Clorinde's ATK as Electro DMG. DMG dealt this way is considered Normal Attack DMG.\n\nThe Glimbright Shade will appear under the following circumstances:\nWhen Clorinde is about to be hit by an attack.\nWhen Clorinde uses Impale the Night: Pact.\n\n1 Glimbright Shade can be summoned in the aforementioned ways every 1s. 6 Shades can be summoned per single Night Vigil duration.\nIn addition, while Night Vigil is active, the DMG Clorinde receives is decreased by 80% and her interruption resistance is increased. This effect will disappear after the Night Vigil state ends or 1s after she summons 6 Glimbright Shades."
             }
+        ],
+        constellationMap: {
+            c1: [
+                49.7,
+                8
+            ],
+            c2: [
+                49.7,
+                90
+            ],
+            c3: [
+                31.5,
+                67.7
+            ],
+            c4: [
+                67.6,
+                58.0
+            ],
+            c5: [
+                38,
+                37
+            ],
+            c6: [
+                61.1,
+                28.7
+            ]
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        id: "furina",
+        name: "",
+        title: "",
+        constellationName: "",
+        rarity: 0,
+        version: "",
+        element: "",
+        weapon: "",
+        region: "",
+        role: "",
+        unlocked: false,
+        lore: "",
+        abilities: [
+            {
+                id: "normal",
+                name: "",
+                desc: "Performs up to 5 rapid strikes.\n\n Charged Attack:\n Consumes a certain amount of Stamina to unleash 2 rapid sword strikes.\n \n Plunging Attack:\n Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.",
+                previews: [
+                    "normal",
+                    "normal-charge",
+                    "normal-plunge"
+                ]
+            },
+            {
+                id: "skill",
+                name: "",
+                desc: "",
+                previews: []
+            },
+            {
+                id: "burst",
+                name: "",
+                desc: "",
+                previews: [
+                    "burst"
+                ]
+            },
+            {
+                id: "ascension-1",
+                name: "",
+                desc: "",
+                previews: []
+            },
+            {
+                id: "ascension-4",
+                name: "",
+                desc: "",
+                previews: []
+            },
+            {
+                id: "utility",
+                name: "",
+                desc: "",
+                previews: []
+            }
+        ],
+        constellations: [
+            {
+                id: "const-1",
+                level: 1,
+                name: "",
+                desc: ""
+            },
+            {
+                id: "const-2",
+                level: 2,
+                name: "",
+                desc: ""
+            },
+            {
+                id: "const-3",
+                level: 3,
+                name: "",
+                desc: ""
+            },
+            {
+                id: "const-4",
+                level: 4,
+                name: "",
+                desc: ""
+            },
+            {
+                id: "const-5",
+                level: 5,
+                name: "",
+                desc: ""
+            },
+            {
+                id: "const-6",
+                level: 6,
+                name: "",
+                desc: ""
+            }
+        ],
+        constellationMap: {
+            c1: [],
+            c2: [],
+            c3: [],
+            c4: [],
+            c5: [],
+            c6: []
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     },
     {
         id: "hu-tao",
         name: "Hu Tao",
         title: "Spirit of the Eternal Flame",
+        constellationName: "Papilio Charontis",
         rarity: 5,
         version: "1.3",
         element: "Pyro",
@@ -398,12 +599,29 @@ export const characters = [
                 name: "Butterfly's Embrace",
                 desc: "Triggers when Hu Tao's HP drops below 25%, or when she suffers a lethal strike:\nHu Tao will not fall as a result of the DMG sustained. Additionally, for the next 10s, all of her Elemental and Physical RES is increased by 200%, her CRIT Rate is increased by 100%, and her resistance to interruption is greatly increased.\nThis effect triggers automatically when Hu Tao has 1 HP left.\nCan only occur once every 60s."
             }
+        ],
+        constellationMap: {
+            c1: [],
+            c2: [],
+            c3: [],
+            c4: [],
+            c5: [],
+            c6: []
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     },
     {
         id: "keqing",
         name: "Keqing",
         title: "Driving Thunder",
+        constellationName: "Trulla Cementarii",
         rarity: 5,
         version: "1.0",
         element: "Electro",
@@ -500,12 +718,47 @@ export const characters = [
                 name: "Tenacious Star",
                 desc: "When initiating a Normal Attack, a Charged Attack, Elemental Skill or Elemental Burst, Keqing gains a 6% Electro DMG Bonus for 8s.\nEffects triggered by Normal Attacks, Charged Attacks, Elemental Skills and Elemental Bursts are considered independent entities."
             }
+        ],
+        constellationMap: {
+            c1: [
+                28.9,
+                43.5
+            ],
+            c2: [
+                54.1,
+                15.2
+            ],
+            c3: [
+                69.3,
+                28.0
+            ],
+            c4: [
+                62.5,
+                57.7
+            ],
+            c5: [
+                70.6,
+                70.6
+            ],
+            c6: [
+                41.8,
+                90.4
+            ]
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     },
     {
         id: "template",
         name: "",
         title: "",
+        constellationName: "",
         rarity: 0,
         version: "",
         element: "",
@@ -595,6 +848,22 @@ export const characters = [
                 name: "",
                 desc: ""
             }
+        ],
+        constellationMap: {
+            c1: [],
+            c2: [],
+            c3: [],
+            c4: [],
+            c5: [],
+            c6: []
+        },
+        constConnections: [
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
         ]
     }
 ];
