@@ -14,6 +14,12 @@
            playsinline muted style="object-fit: cover; z-index: 5;">
         <source id="video-source" src="" type="video/mp4">
     </video>
+    <button id="skip-btn" class="d-none" onclick="window.skipVideo()" 
+        style="position:absolute; top: 40px; right: 40px; z-index: 10; 
+               background: rgba(0,0,0,0.4); color: white; border: 1px solid rgba(255,255,255,0.3);
+               padding: 8px 24px; letter-spacing: 2px; font-size: 0.8rem; cursor: pointer;">
+    SKIP ▶
+</button>
 
     <div class="container py-4 position-relative" style="z-index: 20;">
       <div class="d-flex justify-content-between align-items-center">
@@ -37,7 +43,13 @@
     </div>
 
     <div id="result-screen" class="result-screen d-none position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center text-center" style="z-index: 100;">
-        <div class="result-content container px-4"></div>
+       <button onclick="window.closeResult()" 
+            style="position:absolute; top: 40px; right: 40px;
+                   background: rgba(0,0,0,0.4); color: white; border: 1px solid rgba(255,255,255,0.3);
+                   padding: 8px 24px; letter-spacing: 2px; font-size: 0.8rem; cursor: pointer; z-index: 110;">
+        CLOSE ✕
+      </button>  
+      <div class="result-content container px-4"></div>
     </div>
 
   </div>
