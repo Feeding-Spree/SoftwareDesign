@@ -112,13 +112,13 @@ Maximum upgrade level is 15.
 Fiery Rain increases all party members' Movement SPD by 15% and ATK by 15% for 10s.
 
 [CONST_MAP]:
-            c1: [19.5, 17],
-            c2: [23,4, 46.3],
-            c3: [61.1, 66.6],
-            c4: [59.3, 22.2],
-            c5: [81, 18],
-            c6: [72, 45]
-                 
+            c1: [26.5, 27],
+            c2: [28, 57],
+            c3: [57, 63.5],
+            c4: [59, 28],
+            c5: [76, 26.5],
+            c6: [69, 44.5]
+
 [CONST_CONNECTIONS]:
             ["c1", "c2"],
             ["c2", "c3"],

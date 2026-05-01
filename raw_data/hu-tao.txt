@@ -117,16 +117,17 @@ This effect triggers automatically when Hu Tao has 1 HP left.
 Can only occur once every 60s.
 
 [CONST_MAP]:
-            c1: [],
-            c2: [],
-            c3: [],
-            c4: [],
-            c5: [],
-            c6: []
-                 
+            c1: [39.5, 15.5],
+            c2: [35.5, 64.5],
+            c3: [75.5, 17.5],
+            c4: [67, 71],
+            c5: [60, 91.5],
+            c6: [75.5, 93.5]
+
 [CONST_CONNECTIONS]:
             ["c1", "c2"],
             ["c2", "c3"],
-            ["c3", "c4"],
+            ["c2", "c4"],
+            ["c2", "c5"],
             ["c4", "c5"],
             ["c5", "c6"]

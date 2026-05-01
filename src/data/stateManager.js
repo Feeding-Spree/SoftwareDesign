@@ -7,7 +7,8 @@
 const STORAGE_KEYS = {
     UNLOCKS: 'akademiya_unlocked',
     PITY_5: 'akademiya_pity5',
-    PITY_4: 'akademiya_pity4'
+    PITY_4: 'akademiya_pity4',
+    ALL_UNLOCKED: 'akademiya_all_unlocked'
 };
 
 export const stateManager = {
@@ -30,7 +31,6 @@ export const stateManager = {
         } else if (rarity === 4) {
             localStorage.setItem(STORAGE_KEYS.PITY_4, reset ? 0 : this.pity4 + 1);
         } else {
-            // Increment both for 3-star pulls
             localStorage.setItem(STORAGE_KEYS.PITY_5, this.pity5 + 1);
             localStorage.setItem(STORAGE_KEYS.PITY_4, this.pity4 + 1);
         }
@@ -55,21 +55,38 @@ export const stateManager = {
     },
 
     /**
-     * Checks if a specific character is already in the collection.
+     * Checks if a specific character is unlocked.
+     * Returns true if master unlock is active OR the character was individually unlocked.
      */
     isUnlocked(id) {
-        return this.unlockedIds.includes(id);
+        return this.isMasterUnlocked || this.unlockedIds.includes(id);
     },
 
-    // 3. UTILITIES
+    // 3. MASTER TOGGLE
+    get isMasterUnlocked() {
+        return localStorage.getItem(STORAGE_KEYS.ALL_UNLOCKED) === 'true';
+    },
+
+    /**
+     * Toggles all characters unlocked/locked.
+     * Preserves individual unlocks — locking master unlock restores previous state.
+     * @returns {boolean} - The new master unlock state.
+     */
+    toggleAllUnlocks() {
+        const next = !this.isMasterUnlocked;
+        localStorage.setItem(STORAGE_KEYS.ALL_UNLOCKED, next);
+        return next;
+    },
+
+    // 4. UTILITIES
     /**
      * Completely wipes the collection and resets pity.
-     * Useful for debugging or restarting the experience.
      */
     resetProgress() {
         localStorage.removeItem(STORAGE_KEYS.UNLOCKS);
+        localStorage.removeItem(STORAGE_KEYS.ALL_UNLOCKED);
         localStorage.setItem(STORAGE_KEYS.PITY_5, 0);
         localStorage.setItem(STORAGE_KEYS.PITY_4, 0);
-        window.location.reload(); // Refresh to update the UI
+        window.location.reload();
     }
 };

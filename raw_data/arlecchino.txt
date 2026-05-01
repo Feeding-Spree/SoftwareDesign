@@ -125,16 +125,17 @@ The DMG of Balemoon Rising is increased by Arlecchino's ATK multiplied by 700% o
 For 20s after Arlecchino uses All Is Ash, both her Normal Attacks and Elemental Burst gain 10% increased CRIT Rate and 70% increased CRIT DMG. This effect can be triggered up to once every 15s.
 
 [CONST_MAP]:
-            c1: [],
-            c2: [],
-            c3: [],
-            c4: [],
-            c5: [],
-            c6: []
+            c1: [49.5, 8.5],
+            c2: [80, 42.5],
+            c3: [50.5, 95],
+            c4: [22, 59.5],
+            c5: [34.5, 29.5],
+            c6: [51, 39.5]
                  
 [CONST_CONNECTIONS]:
             ["c1", "c2"],
             ["c2", "c3"],
             ["c3", "c4"],
             ["c4", "c5"],
-            ["c5", "c6"]
+            ["c5", "c6"],
+            ["c6", "c4"]

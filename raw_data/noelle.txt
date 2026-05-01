@@ -1,0 +1,133 @@
+[id]: noelle
+[NAME]: Noelle
+[TITLE]: Chivalric Blossom
+[CONSTELLATION_NAME]: Parma Cordis
+[RARITY]: 4
+[VERSION]: 1.0
+[ELEMENT]: Geo
+[WEAPON]: Claymore
+[REGION]: Mondstadt
+[ROLE]: Tank
+[UNLOCKED]: false 
+[LORE]:
+
+Like most of Mondstadt's young people, Noelle always dreamed of being a knight of Favonius when she grew up.
+She may not have what it takes to be a knight just yet, but she is learning. Working as a maid at the Knights' headquarters, she is constantly taking notes on what constitutes knightly speech, knightly conduct, and knightly customs.
+She holds firm to her belief that one day she will join their ranks — she just needs to keep trying her hardest at everything she does.
+
+[ABILITY_ID]: normal
+[ABILITY_NAME]: Favonius Bladework - Maid
+[ABILITY_DESC]:
+Normal Attack
+Performs up to 4 consecutive strikes.
+
+Charged Attack
+Drains Stamina over time to perform continuous spinning attacks against all nearby opponents.
+At the end of the sequence, performs a more powerful slash.
+
+Plunging Attack
+Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
+
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: Breastplate
+[ABILITY_DESC]: 
+
+Summons protective stone armor, dealing Geo DMG to surrounding opponents and creating a shield. The shield's DMG Absorption scales based on Noelle's DEF.
+The shield has the following properties:
+When Noelle's Normal and Charged Attacks hit a target, they have a certain chance to regenerate HP for all characters.
+Possesses 150% DMG Absorption efficiency against all Elemental and Physical DMG.
+
+The amount of HP healed when regeneration is triggered scales based on Noelle's DEF.
+
+[PREVIEWS]: skill
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: Sweeping Time
+[ABILITY_DESC]: 
+
+Gathering the strength of stone around her weapon, Noelle strikes the opponents surrounding her within a large AoE, dealing Geo DMG.
+Afterwards, Noelle gains the following effects:
+Larger attack AoE.
+Converts attack DMG to Geo DMG that cannot be overridden by any other elemental infusion.
+Increased ATK that scales based on her DEF.
+
+[PREVIEWS]: burst, burst-normal, burst-charge, burst-plunge
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: Devotion
+[ABILITY_DESC]: 
+
+When Noelle is in the party but not on the field, this ability triggers automatically when your active character's HP falls below 30%:
+Creates a shield for your active character that lasts for 20s and absorbs DMG equal to 400% of Noelle's DEF.
+The shield has a 150% DMG Absorption effectiveness against all Elemental and Physical DMG.
+This effect can only occur once every 60s.
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]: Nice and Clean
+[ABILITY_DESC]: 
+
+Every 4 Normal or Charged Attack hits will decrease the CD of Breastplate by 1s.
+Hitting multiple opponents with a single attack is only counted as 1 hit.
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]: Maid's Knighthood
+[ABILITY_DESC]: 
+
+When a Perfect Cooking is achieved on a DEF-boosting dish, Noelle has a 12% chance to obtain double the product.
+
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: I Got Your Back
+[CONST_DESC]: 
+While Sweeping Time and Breastplate are both in effect, the chance of Breastplate's healing effects activating is increased to 100%.
+
+[CONST]: const-2
+[CONST_NAME]: Combat Maid
+[CONST_DESC]:
+Decreases the Stamina Consumption of Noelle's Charged Attacks by 20% and increases her Charged Attack DMG by 15%.
+
+[CONST]: const-3
+[CONST_NAME]: Invulnerable Maid
+[CONST_DESC]:
+Increases the Level of Breastplate by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-4
+[CONST_NAME]: To Be Cleaned
+[CONST_DESC]:
+When Breastplate's duration expires or it is destroyed by DMG, it will deal 400% of Noelle's ATK of Geo DMG to surrounding opponents.
+
+[CONST]: const-5
+[CONST_NAME]: Favonius Sweeper Master
+[CONST_DESC]:
+Increases the Level of Sweeping Time by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-6
+[CONST_NAME]: Must Be Spotless
+[CONST_DESC]:
+Sweeping Time increases Noelle's ATK by an additional 50% of her DEF.
+Additionally, every opponent defeated during the skill's duration adds 1s to the duration, up to 10s.
+
+[CONST_MAP]:
+            c1: [49.5, 8.5],
+            c2: [77.5, 23.5],
+            c3: [75, 65.5],
+            c4: [49.5, 93],
+            c5: [24, 65],
+            c6: [22, 23.5]
+                 
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"],
+            ["c1", "c6"]

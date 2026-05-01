@@ -1,6 +1,7 @@
 [id]: furina
 [NAME]: Furina
 [TITLE]: Endless Solo of Solitude
+[CONSTELLATION_NAME]: Animula Choragi
 [RARITY]: 5
 [VERSION]: 4.2
 [ELEMENT]: Hydro
@@ -30,7 +31,7 @@ When Furina takes the field, her starting Arkhe will be Ousia.
 
 Plunging Attack
 Plunges from mid-air to strike the ground below, damaging opponents along the path and dealing AoE DMG upon impact.
-[PREVIEWS]: normal, normal-charge, normal-plunge
+[PREVIEWS]: normal-o, normal-charge-o, normal-plunge-o, normal-p, normal-charge-p, normal-plunge-p
 
 [ABILITY_ID]: skill
 [ABILITY_NAME]: Salon Solitaire
@@ -49,7 +50,7 @@ Summons the Singer of Many Waters, who will heal nearby active character(s) base
 The Salon Members and Singer of Many Waters share a duration, and when Furina uses her Charged Attack to change the guest type, the new guests will inherit the initial duration.
 While the Salon Members and the Singer of Many Waters are on the field, Furina can move on the water's surface.
 
-[PREVIEWS]: 
+[PREVIEWS]: skill-o, skill-p
 
 [ABILITY_ID]: burst
 [ABILITY_NAME]: Let the People Rejoice
@@ -59,7 +60,7 @@ Rouses the impulse to revel, creating a stage of foam that will deal AoE Hydro D
 At the same time, Furina will increase the DMG dealt by and Incoming Healing Bonus of all nearby party members based on the amount of Fanfare she has.
 When the duration ends, Furina's Fanfare points will be cleared.
 
-[PREVIEWS]: burst
+[PREVIEWS]: burst-o, burst-p
 
 [ABILITY_ID]: ascension-1
 [ABILITY_NAME]: Endless Waltz
@@ -134,3 +135,19 @@ Arkhe: Pneuma
 This Normal Attack (not including Arkhe: Seats Sacred and Secular Attacks), Charged Attack, or Plunging Attack ground impact DMG will be further increased by an amount equivalent to 25% of Furina's max HP. When any of the attacks mentioned previously hit an opponent, all nearby characters in the party will consume 1% of their current HP.
 
 During the duration of each instance of "Center of Attention," the above effects can be triggered up to 6 times. "Center of Attention" will end when its effects have triggered 6 times or when the duration expires.
+
+[CONST_MAP]:
+            c1: [49.5, 13],
+            c2: [77.5, 52.5],
+            c3: [75.5, 75.5],
+            c4: [51.5, 86],
+            c5: [27, 78],
+            c6: [23.5, 54]
+
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"],
+            ["c6", "c1"]

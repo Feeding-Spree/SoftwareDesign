@@ -6,111 +6,207 @@ import re
 SOURCE_FOLDER = 'raw_data'
 OUTPUT_FILE = 'src/data/characters.js'
 
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+
+def pluck(tag: str, source: str) -> str:
+    """Extract a single-line value for a given tag."""
+    marker = f'[{tag}]:'
+    if marker not in source:
+        return ''
+    return source.split(marker, 1)[1].split('\n', 1)[0].strip()
+
+
+def pluck_multiline(tag: str, source: str, stop_tags: list[str] = None) -> str:
+    """Extract a multi-line block starting at tag, stopping at any stop_tag."""
+    marker = f'[{tag}]:'
+    if marker not in source:
+        return ''
+    content = source.split(marker, 1)[1].strip()
+    if stop_tags:
+        for stop in stop_tags:
+            content = content.split(f'[{stop}]:', 1)[0]
+    return content.strip()
+
+
+def parse_constellation_map(raw: str) -> dict:
+    """
+    Parse the CONST_MAP block into a dict.
+    Expected format (one entry per line):
+        c1: [x, y],
+        c2: [x, y],
+    """
+    result = {}
+    for line in raw.splitlines():
+        line = line.strip().rstrip(',')
+        if not line:
+            continue
+        match = re.match(r'(\w+)\s*:\s*(\[.*?\])', line)
+        if match:
+            key, value = match.group(1), match.group(2)
+            try:
+                result[key] = json.loads(value)
+            except json.JSONDecodeError:
+                pass
+    return result
+
+
+def parse_const_connections(raw: str) -> list:
+    """
+    Parse the CONST_CONNECTIONS block into a list of pairs.
+    Expected format (one pair per line):
+        ["c1", "c2"],
+        ["c3", "c4"],
+    """
+    result = []
+    for line in raw.splitlines():
+        line = line.strip().rstrip(',')
+        if not line:
+            continue
+        try:
+            parsed = json.loads(line)
+            if isinstance(parsed, list):
+                result.append(parsed)
+        except json.JSONDecodeError:
+            pass
+    return result
+
+
+def extract_spatial_block(tag: str, content: str) -> str:
+    """
+    Pull the raw text block for a spatial tag, stopping before the next
+    bracketed tag or end of file.
+    """
+    marker = f'[{tag}]:'
+    if marker not in content:
+        return ''
+    raw = content.split(marker, 1)[1].strip()
+    # Stop at any next [TAG]: pattern
+    raw = re.split(r'\n\s*\[[\w_]+\]:', raw, maxsplit=1)[0]
+    return raw.strip()
+
+
+# ---------------------------------------------------------------------------
+# Main parser
+# ---------------------------------------------------------------------------
+
+def parse_character_file(char_id: str, content: str) -> dict:
+    # Split header from abilities/constellations
+    parts = content.split('[ABILITY_ID]:', 1)
+    header = parts[0]
+    body = '[ABILITY_ID]:' + parts[1] if len(parts) > 1 else ''
+
+    # Split abilities from constellations
+    ability_body, _, const_body = body.partition('[CONST]:')
+
+    # Parse abilities
+    ability_blocks = re.split(r'\[ABILITY_ID\]:', ability_body)
+    abilities = []
+    for block in ability_blocks:
+        block = block.strip()
+        if not block:
+            continue
+        ability_id = block.split('\n', 1)[0].strip()
+        desc = pluck_multiline('ABILITY_DESC', block, stop_tags=['PREVIEWS', 'ABILITY_ID'])
+        previews_raw = pluck('PREVIEWS', block)
+        previews = [p.strip() for p in previews_raw.split(',') if p.strip()] if previews_raw else []
+        abilities.append({
+            'id': ability_id,
+            'name': pluck('ABILITY_NAME', block),
+            'desc': desc,
+            'previews': previews,
+        })
+
+    # Parse constellations
+    const_blocks = re.split(r'\[CONST\]:', const_body)
+    constellations = []
+    for index, block in enumerate(const_blocks):
+        block = block.strip()
+        if not block:
+            continue
+        const_id = block.split('\n', 1)[0].strip()
+        desc = pluck_multiline(
+            'CONST_DESC', block,
+            stop_tags=['CONST_MAP', 'CONSTCONNECTIONS', 'CONST_CONNECTIONS', 'CONST']
+        )
+        constellations.append({
+            'id': const_id,
+            'level': index + 1,
+            'name': pluck('CONST_NAME', block),
+            'desc': desc,
+        })
+
+    # Parse spatial data from full content
+    constellation_map = parse_constellation_map(
+        extract_spatial_block('CONST_MAP', content)
+    ) or {'c1': [], 'c2': [], 'c3': [], 'c4': [], 'c5': [], 'c6': []}
+
+    connections_raw = (
+        extract_spatial_block('CONST_CONNECTIONS', content)
+        or extract_spatial_block('CONSTCONNECTIONS', content)
+    )
+    const_connections = parse_const_connections(connections_raw) or [[], [], [], [], [], []]
+
+    rarity_raw = pluck('RARITY', header)
+    lore = pluck_multiline('LORE', header, stop_tags=['ABILITY_ID', 'CONST'])
+
+    return {
+        'id': char_id,
+        'name': pluck('NAME', header),
+        'title': pluck('TITLE', header),
+        'constellationName': pluck('CONSTELLATION_NAME', header),
+        'rarity': int(rarity_raw) if rarity_raw.isdigit() else 0,
+        'version': pluck('VERSION', header),
+        'element': pluck('ELEMENT', header),
+        'weapon': pluck('WEAPON', header),
+        'region': pluck('REGION', header),
+        'role': pluck('ROLE', header),
+        'unlocked': pluck('UNLOCKED', header).lower() == 'true',
+        'lore': lore,
+        'abilities': abilities,
+        'constellations': constellations,
+        'constellationMap': constellation_map,
+        'constConnections': const_connections,
+    }
+
+
 def run_sync():
     if not os.path.exists(SOURCE_FOLDER):
         os.makedirs(SOURCE_FOLDER)
-        print(f"Created '{SOURCE_FOLDER}' folder.")
+        print(f"Created '{SOURCE_FOLDER}' folder. Add .txt files and re-run.")
         return
 
     roster = []
+    txt_files = [f for f in os.listdir(SOURCE_FOLDER) if f.endswith('.txt')]
 
-    for filename in os.listdir(SOURCE_FOLDER):
-        if filename.endswith('.txt'):
-            char_id = filename.replace('.txt', '')
-            with open(os.path.join(SOURCE_FOLDER, filename), 'r', encoding='utf-8') as f:
+    if not txt_files:
+        print("No .txt files found in source folder.")
+        return
+
+    for filename in sorted(txt_files):
+        char_id = filename[:-4]  # strip .txt
+        filepath = os.path.join(SOURCE_FOLDER, filename)
+        try:
+            with open(filepath, 'r', encoding='utf-8') as f:
                 content = f.read()
-
-            parts = content.split('[ABILITY_ID]:')
-            header_section = parts[0]
-            the_rest = '[ABILITY_ID]:'.join(parts[1:])
-            skills_vs_consts = the_rest.split('[CONST]:')
-            
-            skill_blocks = skills_vs_consts[0].split('[ABILITY_ID]:') if len(skills_vs_consts) > 0 else []
-            const_blocks = skills_vs_consts[1:] if len(skills_vs_consts) > 1 else []
-
-            def pluck(tag, source):
-                try:
-                    return source.split(f'[{tag}]:')[1].split('\n')[0].strip()
-                except:
-                    return ""
-
-            def pluck_spatial(tags, source, default):
-                for tag in tags:
-                    if f'[{tag}]:' in source:
-                        try:
-                            raw = source.split(f'[{tag}]:')[1].strip()
-                            raw = re.split(r'\[CONST', raw)[0].strip()
-                            formatted = re.sub(r'(\w+):', r'"\1":', raw)
-                            if isinstance(default, dict) and not formatted.startswith('{'):
-                                formatted = "{" + formatted + "}"
-                            return json.loads(formatted)
-                        except:
-                            continue
-                return default
-
-            # 1. Main Character Info
-            character = {
-                "id": char_id,
-                "name": pluck("NAME", header_section),
-                "title": pluck("TITLE", header_section),
-                "constellationName": pluck("CONSTELLATION_NAME", header_section), # --- NEW FIELD ---
-                "rarity": int(pluck("RARITY", header_section) or 0),
-                "version": pluck("VERSION", header_section),
-                "element": pluck("ELEMENT", header_section),
-                "weapon": pluck("WEAPON", header_section),
-                "region": pluck("REGION", header_section),
-                "role": pluck("ROLE", header_section),
-                "unlocked": pluck("UNLOCKED", header_section).lower() == 'true',
-                "lore": header_section.split('[LORE]:')[1].strip() if '[LORE]:' in header_section else "",
-                "abilities": [],
-                "constellations": []
-            }
-
-            # 2. Add Abilities
-            for block in skill_blocks:
-                if not block.strip(): continue
-                raw_desc = block.split('[ABILITY_DESC]:')[1].strip() if '[ABILITY_DESC]:' in block else ""
-                clean_desc = raw_desc.split('[PREVIEWS]:')[0].strip()
-                character["abilities"].append({
-                    "id": block.split('\n')[0].strip(),
-                    "name": pluck("ABILITY_NAME", block),
-                    "desc": clean_desc,
-                    "previews": pluck("PREVIEWS", block).replace(' ', '').split(',') if pluck("PREVIEWS", block) else []
-                })
-
-            # 3. Add Constellations
-            for index, block in enumerate(const_blocks):
-                if not block.strip(): continue
-                raw_c_desc = block.split('[CONST_DESC]:')[1].strip() if '[CONST_DESC]:' in block else ""
-                
-                clean_c_desc = raw_c_desc
-                for tag in ["CONST_MAP", "CONSTCONNECTIONS", "CONST_CONNECTIONS"]:
-                    clean_c_desc = clean_c_desc.split(f'[{tag}]:')[0]
-                
-                character["constellations"].append({
-                    "id": block.split('\n')[0].strip(),
-                    "level": index + 1,
-                    "name": pluck("CONST_NAME", block),
-                    "desc": clean_c_desc.strip()
-                })
-
-            # 4. Spatial Data at the VERY END
-            default_map = {"c1": [], "c2": [], "c3": [], "c4": [], "c5": [], "c6": []}
-            default_conn = [[], [], [], [], [], []]
-            
-            character["constellationMap"] = pluck_spatial(["CONST_MAP"], content, default_map)
-            character["constConnections"] = pluck_spatial(["CONSTCONNECTIONS", "CONST_CONNECTIONS"], content, default_conn)
-
+            character = parse_character_file(char_id, content)
             roster.append(character)
+            print(f"  ✓ Parsed: {character['name']} ({char_id})")
+        except Exception as e:
+            print(f"  ✗ Failed to parse '{filename}': {e}")
 
-    json_string = json.dumps(roster, indent=4)
+    # Serialize to JS — unquote object keys for cleaner JS output
+    json_string = json.dumps(roster, indent=4, ensure_ascii=False)
     clean_js = re.sub(r'"(\w+)":', r'\1:', json_string)
 
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
     with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-        f.write(f"export const characters = {clean_js};")
-    
-    print(f"Sync Complete! Added general constellation name and cleaned descriptions.")
+        f.write(f"export const characters = {clean_js};\n")
 
-if __name__ == "__main__":
+    print(f"\nSync complete! {len(roster)} character(s) written to '{OUTPUT_FILE}'.")
+
+
+if __name__ == '__main__':
     run_sync()

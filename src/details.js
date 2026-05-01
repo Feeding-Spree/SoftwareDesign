@@ -157,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const connections = character.constConnections || [];
 
             container.innerHTML = `
-                <div id="coord-tracker" style="display:none; position:fixed; pointer-events:none; z-index:9999; background:rgba(0,0,0,0.8); color:#fff; padding:4px 8px; border-radius:4px; font-size:11px;"></div>
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-5">
                         <div class="constellation-map-container" id="map-target" style="position:relative; background:none;">
@@ -165,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             
                             ${mapData ? `
                             <svg viewBox="0 0 100 100" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:10; pointer-events:none;">
-                                <g class="constellation-lines" stroke="rgba(255,255,255,0.25)" stroke-width="0.4">
+                                <g class="constellation-lines">
                                     ${connections.map(conn => {
                                         const s = mapData[conn[0]], e = mapData[conn[1]];
                                         return (s && e) ? `<line x1="${s[0]}" y1="${s[1]}" x2="${e[0]}" y2="${e[1]}" />` : '';
@@ -208,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                 </div>`;
-            setupCoordinateTracker();
         }
     }
 
@@ -219,20 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="/characters/${charId}/talent-icons/${ability.id}.webp" class="ability-btn ${idx === 0 ? 'active' : ''}" 
                  style="width:55px; cursor:pointer" onclick="window.setAbility('${ability.id}', this)">`).join('');
         window.setAbility(character.abilities[0].id);
-    }
-
-    function setupCoordinateTracker() {
-        const target = document.getElementById('map-target');
-        const tracker = document.getElementById('coord-tracker');
-        if (!target || !tracker) return;
-        target.addEventListener('mousemove', (e) => {
-            const rect = target.getBoundingClientRect();
-            const x = ((e.clientX - rect.left) / rect.width) * 100, y = ((e.clientY - rect.top) / rect.height) * 100;
-            tracker.style.display = 'block';
-            tracker.style.left = (e.clientX + 15) + 'px'; tracker.style.top = (e.clientY + 15) + 'px';
-            tracker.innerText = `${x.toFixed(1)}, ${y.toFixed(1)}`;
-        });
-        target.addEventListener('mouseleave', () => tracker.style.display = 'none');
     }
 
     const defaultTab = document.querySelector('.tab-link');
