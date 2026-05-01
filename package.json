@@ -6,13 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+<<<<<<< HEAD
     "preview": "vite preview",
     "server": "node server.js"
+=======
+    "preview": "vite preview"
+>>>>>>> feab7b3ee493bdf5e4d52758131c51dc2233825d
   },
   "devDependencies": {
     "vite": "^8.0.4"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@neondatabase/serverless": "^1.1.0",
     "bcrypt": "^6.0.0",
     "bootstrap": "^5.3.8",
@@ -22,3 +27,8 @@
     "jsonwebtoken": "^9.0.3"
   }
 }
+=======
+    "bootstrap": "^5.3.8"
+  }
+}
+>>>>>>> feab7b3ee493bdf5e4d52758131c51dc2233825d
