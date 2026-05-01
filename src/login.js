@@ -52,11 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (isLoginMode) {
                     // If login is successful, redirect to the main gacha page
                     setTimeout(() => {
-<<<<<<< HEAD
                         window.location.href = "/archive.html"; 
-=======
-                        window.location.href = "/wish.html"; 
->>>>>>> feab7b3ee493bdf5e4d52758131c51dc2233825d
                     }, 1000);
                 } else {
                     // If registration is successful, auto-switch to login mode
