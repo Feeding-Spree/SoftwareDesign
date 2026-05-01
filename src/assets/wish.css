@@ -1,0 +1,151 @@
+/* src/assets/wish.css */
+
+.wish-page {
+    background-image: url('/wish/wish-background.webp') !important;
+    background-color: #010a13; 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh; width: 100vw;
+    overflow: hidden;
+}
+
+#wish-video { object-fit: cover; z-index: 5; pointer-events: none; }
+
+.result-screen {
+    background-image: url('/wish/splash-background.webp') !important;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    backdrop-filter: blur(15px);
+    z-index: 100;
+}
+
+.results-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 150px 40px; 
+    gap: 20px; 
+    justify-content: center;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overflow-y: visible !important; 
+    background: none !important;
+}
+
+.card-border-overlay {
+    display: none;
+}
+.mini-result-card {
+    position: relative;
+    width: 120px;
+    height: 520px;
+    background: none !important;
+    border: none !important;
+    overflow: visible !important; /* allow top bleed */
+    isolation: isolate;
+}
+
+.mini-result-card:hover { transform: translateY(-10px); }
+
+/* THE MASKED PORTRAIT WINDOW[cite: 2] */
+
+.portrait-clipper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 10;
+    clip-path: url(#card-shape-clip);
+
+    /* Tighten the fade so portrait is fully opaque in the middle */
+    -webkit-mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 5%,       /* ← was 12%, now fades in faster */
+        black 95%,      /* ← was 82%, now stays opaque longer */
+        transparent 100%
+    );
+    mask-image: linear-gradient(to bottom,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+}
+
+.card-frame {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 2;
+    object-fit: contain;
+    pointer-events: none;
+    mix-blend-mode: luminosity;
+    opacity: 1; /* subtle overlay, just shows the border details */
+}
+
+.character-portrait {
+    position: absolute;
+    top: 40%; left: 50%;
+    transform: translate(-50%, -45%); /* shift up so head bleeds above */
+    width: 140%;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.card-cover {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: transparent !important; 
+    z-index: 2; 
+}
+
+.card-info {
+    position: absolute;
+    bottom: 45px;
+    left: 0; width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20; /* above card-frame */
+}
+
+.weapon-portrait {
+    position: absolute;
+    top: 45%; left: 50%;
+    transform: translate(-50%, -45%); /* shift up so head bleeds above */
+    width: 200%;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.stars {
+    color: var(--lol-gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+/* RARITY GLOWS[cite: 2] */
+.rarity-5 .card-frame {
+    filter: drop-shadow(0 0 15px rgba(255, 184, 0, 0.8)) drop-shadow(0 0 35px rgba(255, 184, 0, 0.4));
+}
+.rarity-4 .card-frame {
+    filter: drop-shadow(0 0 12px rgba(148, 95, 177, 0.9)) drop-shadow(0 0 30px rgba(148, 95, 177, 0.5));
+}
+.rarity-3 .card-frame {
+    filter: drop-shadow(0 0 8px rgba(0, 177, 255, 0.6)) drop-shadow(0 0 20px rgba(0, 177, 255, 0.3));
+}
+
+.animate-result-enter {
+    animation: akademiyaSlideUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes akademiyaSlideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}

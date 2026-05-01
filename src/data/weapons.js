@@ -1,0 +1,15 @@
+export const weapons = [
+    { id: "cool_steel",            name: "Cool Steel",            rarity: 3, pullType: "weapon" }, 
+    { id: "harbinger_of_dawn",     name: "Harbinger of Dawn",     rarity: 3, pullType: "weapon" },
+    { id: "skyrider_sword",        name: "Skyrider Sword",        rarity: 3, pullType: "weapon" },
+    { id: "debate_club",           name: "Debate Club",           rarity: 3, pullType: "weapon" },
+    { id: "bloodtainted_greatsword", name: "Bloodtainted Greatsword", rarity: 3, pullType: "weapon" },
+    { id: "ferrous_shadow",        name: "Ferrous Shadow",        rarity: 3, pullType: "weapon" },
+    { id: "black_tassel",          name: "Black Tassel",          rarity: 3, pullType: "weapon" }, 
+    { id: "magic_guide",           name: "Magic Guide",           rarity: 3, pullType: "weapon" }, 
+    { id: "thrilling_tales",       name: "Thrilling Tales of Dragon Slayers", rarity: 3, pullType: "weapon" }, 
+    { id: "emerald_orb",           name: "Emerald Orb",           rarity: 3, pullType: "weapon" }, 
+    { id: "slingshot",             name: "Slingshot",             rarity: 3, pullType: "weapon" }, 
+    { id: "sharpshooters_oath",    name: "Sharpshooter's Oath",   rarity: 3, pullType: "weapon" },
+    { id: "raven_bow",             name: "Raven Bow",             rarity: 3, pullType: "weapon" },
+];

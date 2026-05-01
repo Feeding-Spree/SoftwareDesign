@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Character Details | The Oasis</title>
+</head>
+<body id="details-body" class="details-page">
+
+  <section class="hero-section container">
+    <div class="hero-content w-100">
+      
+      <div class="mb-5">
+        <a href="index.html" class="back-link">
+          <span class="arrow">←</span> BACK TO ARCHIVE
+        </a>
+      </div>
+
+      <div class="col-lg-7 hero-content">
+        <div id="char-rarity" class="d-flex gap-1 mb-2"></div>
+        <h1 id="char-name" class="mb-3"></h1>
+        <h2 id="char-title" class="text-gold tracking-widest mb-2 italic"></h2>
+        <p id="char-lore" class="mb-5"></p>
+      </div>
+
+      <div class="d-flex gap-4 mt-5 flex-wrap">
+        <div class="info-box">
+          <img id="role-icon" class="info-icon" alt="Role">
+          <div class="info-text">
+            <span class="label">ROLE</span>
+            <span id="char-role" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="region-icon" class="info-icon" alt="Region">
+          <div class="info-text">
+            <span class="label">REGION</span>
+            <span id="char-region" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="element-icon" class="info-icon" alt="Element">
+          <div class="info-text">
+            <span class="label">ELEMENT</span>
+            <span id="char-element-display" class="value"></span>
+          </div>
+        </div>
+
+        <div class="info-box">
+          <img id="weapon-icon" class="info-icon" alt="Weapon">
+          <div class="info-text">
+            <span class="label">WEAPON</span>
+            <span id="char-weapon-display" class="value"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="abilities-section">
+    <div class="container-fluid px-5">
+      
+      <div class="tabs-nav d-flex justify-content-center gap-5 mb-5 border-bottom border-secondary border-opacity-25">
+        <button class="tab-link active" onclick="window.switchTab('abilities', this)">ABILITIES</button>
+        <button class="tab-link" onclick="window.switchTab('constellations', this)">CONSTELLATION</button>
+      </div>
+
+      <div id="morph-container">
+        </div>
+
+    </div>
+  </section>
+
+  <script type="module" src="/src/details.js"></script>
+</body>
+</html>

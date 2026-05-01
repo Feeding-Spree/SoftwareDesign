@@ -1,0 +1,135 @@
+[id]: lisa
+[NAME]: Lisa
+[TITLE]: Witch of Purple Rose
+[CONSTELLATION_NAME]: 
+[RARITY]: 4
+[VERSION]: 1.0
+[ELEMENT]: Electro
+[WEAPON]: Catalyst
+[REGION]: Mondstadt
+[ROLE]: Main DPS
+[UNLOCKED]: false
+[LORE]:
+
+She is an intellectual witch who can never get enough naps. As the Librarian of the Knights of Favonius, Lisa is smart in that she always knows exactly what to do with whatever troubles her.
+As much as she loves her sleep, she still manages to keep everything under control in a calm, composed manner.
+
+
+
+[ABILITY_ID]: normal
+[ABILITY_NAME]: Lightning Touch
+[ABILITY_DESC]:
+Normal Attack
+Performs up to 4 lightning attacks that deal Electro DMG.
+
+Charged Attack
+Consumes a certain amount of Stamina to deal AoE Electro DMG after a short casting time.
+
+Plunging Attack
+Gathering the might of Electro, Lisa plunges towards the ground from mid-air, damaging all opponents in her path. Deals AoE Electro DMG upon impact with the ground.
+
+[PREVIEWS]: normal, normal-charge, normal-plunge
+
+[ABILITY_ID]: skill
+[ABILITY_NAME]: Violet Arc
+[ABILITY_DESC]: 
+
+Channels the power of lightning to sweep bothersome matters away.
+
+(‍Press‍/‍Tap‍)
+Releases a homing Lightning Orb.
+On hit, it deals Electro DMG and applies a stack of the Conductive status (max 3 stacks) to opponents in a small AoE.
+
+Hold
+After an extended casting time, calls down lightning from the heavens, dealing massive Electro DMG to all nearby opponents.
+Deals great amounts of extra damage to opponents based on the number of Conductive stacks applied to them, and clears their Conductive status.
+
+[PREVIEWS]: skill-tap, skill-hold
+
+[ABILITY_ID]: burst
+[ABILITY_NAME]: Lightning Rose
+[ABILITY_DESC]: 
+
+Summons a Lightning Rose that unleashes powerful lightning bolts, launching surrounding opponents and dealing Electro DMG.
+
+The Lightning Rose will continuously emit lightning to knock back opponents and deal Electro DMG throughout the ability's duration.
+
+[PREVIEWS]: burst
+
+[ABILITY_ID]: ascension-1
+[ABILITY_NAME]: Induced Aftershock
+[ABILITY_DESC]: 
+
+Hits by Charged Attacks apply Violet Arc's Conductive status to opponents.
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: ascension-4
+[ABILITY_NAME]: Static Electricity Field
+[ABILITY_DESC]: 
+
+Opponents hit by Lightning Rose have their DEF decreased by 15% for 10s.
+
+[PREVIEWS]: 
+
+[ABILITY_ID]: utility
+[ABILITY_NAME]: General Pharmaceutics
+[ABILITY_DESC]: 
+
+When Lisa crafts a potion, she has a 20% chance to refund a portion of the crafting materials used.
+
+[PREVIEWS]: 
+
+[CONST]: const-1
+[CONST_NAME]: Infinite Circuit
+[CONST_DESC]: 
+Lisa regenerates 2 Energy for every opponent hit while holding Violet Arc.
+A maximum of 10 Energy can be regenerated in this manner at any one time.
+
+[CONST]: const-2
+[CONST_NAME]: Electromagnetic Field
+[CONST_DESC]:
+Holding Violet Arc has the following effects:
+
+Increases DEF by 25%.
+Increases Lisa's resistance to interruption.
+
+[CONST]: const-3
+[CONST_NAME]: Resonant Thunder
+[CONST_DESC]:
+Increases the Level of Lightning Rose by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-4
+[CONST_NAME]: Plasma Eruption
+[CONST_DESC]:
+Lightning Rose now unleashes 1-3 lightning bolts when it attacks.
+
+[CONST]: const-5
+[CONST_NAME]: Electrocute
+[CONST_DESC]:
+Increases the Level of Violet Arc by 3.
+Maximum upgrade level is 15.
+
+[CONST]: const-6
+[CONST_NAME]: Pulsating Witch
+[CONST_DESC]:
+When Lisa takes the field, she applies 3 stacks of Violet Arc's Conductive status onto nearby opponents.
+This effect can only occur once every 5s.
+
+[CONST_MAP]:
+            c1: [31.5, 29],
+            c2: [71.5, 29],
+            c3: [50, 42.5],
+            c4: [50, 68],
+            c5: [31.5, 77.5],
+            c6: [70, 77]
+                 
+[CONST_CONNECTIONS]:
+            ["c1", "c2"],
+            ["c2", "c3"],
+            ["c3", "c1"],
+            ["c3", "c4"],
+            ["c4", "c5"],
+            ["c5", "c6"],
+            ["c6", "c4"],
