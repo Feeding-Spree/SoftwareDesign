@@ -18,7 +18,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         wish: resolve(__dirname, 'wish.html'),
         details: resolve(__dirname, 'details.html'),
-        login: resolve(__dirname, 'login.html') // Add your new login page here too!
+        login: resolve(__dirname, 'archive.html') // Add your new login page here too!
       }
     }
   }

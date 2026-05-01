@@ -1,65 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Akademiya | Archive</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Login | Gacha Simulator</title>
+    <link rel="stylesheet" href="/src/assets/style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffffff;
+            font-family: sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Carousel background layer */
+        .bg-carousel {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .bg-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.8s ease-in-out;
+        }
+
+        .bg-slide.active {
+            opacity: 1;
+        }
+
+        /* Dark overlay for readability */
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.52);
+            z-index: 1;
+        }
+
+        /* Login card */
+        .auth-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(30, 30, 30, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            width: 320px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .auth-container input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .auth-container input::placeholder {
+            color: #aaa;
+        }
+
+        .auth-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--lol-gold, #c8a84b);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.2s;
+        }
+
+        .auth-container button:hover {
+            background-color: var(--lol-gold, #c8a84b);
+            filter: brightness(1.15);
+        }
+
+        .toggle-text {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .toggle-btn {
+            color: var(--lol-gold, #c8a84b);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-size: 0.9em;
+            min-height: 20px;
+        }
+
+        #mute-btn {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 10;
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        #mute-btn:hover {
+            background: rgba(60, 60, 60, 0.85);
+        }
+
+        #mute-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+    </style>
 </head>
-<body class="archive-page">
+<body>
 
-  <div class="container py-5">
-    <header class="text-center mb-5">
-      <h1 class="text-gold tracking-widest italic fw-bold uppercase">THE AKADEMIYA</h1>
-      <h3 class="archive-title">CHARACTER ARCHIVE</h3>
+    <!-- Mute button -->
+    <button id="mute-btn" title="Toggle music">
+        <svg id="icon-sound" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+        </svg>
+        <svg id="icon-mute" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:none;">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+        </svg>
+    </button>
 
-      <div class="mt-4 d-flex justify-content-center">
-        <a href="wish.html" class="custom-select p-2 px-5 text-decoration-none d-inline-block" style="font-size: 1.1rem; border: 1px solid var(--lol-gold);">
-          ✨ GO TO SUMMON
-        </a>
-      </div>
-    </header>
+    <!-- Background music -->
+    <audio id="bg-music" src="/public/assets/ui/bg/bg.mp3" loop autoplay></audio>
 
-    <div id="character-grid" class="row g-4 justify-content-center"></div>
-  </div>
-  
-  <div class="filter-bar container mb-5">
-    <div class="row g-3 justify-content-center">
-      <div class="col-md-2">
-        <select class="form-select custom-select" onchange="updateFilter('element', this.value)">
-          <option value="all">ELEMENT: ALL</option>
-          <option value="Electro">ELECTRO</option>
-          <option value="Pyro">PYRO</option>
-          <option value="Hydro">HYDRO</option>
-          <option value="Anemo">ANEMO</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <select class="form-select custom-select" onchange="updateFilter('weapon', this.value)">
-          <option value="all">WEAPON: ALL</option>
-          <option value="Sword">SWORD</option>
-          <option value="Polearm">POLEARM</option>
-          <option value="Bow">BOW</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <select class="form-select custom-select" onchange="updateFilter('rarity', this.value)">
-          <option value="all">RARITY: ALL</option>
-          <option value="5">5-STAR</option>
-          <option value="4">4-STAR</option>
-        </select>
-      </div>
-      <div class="col-md-2">
-        <select class="form-select custom-select" onchange="updateFilter('version', this.value)">
-          <option value="all">VERSION: ALL</option>
-          <option value="1.0">V1.0</option>
-          <option value="4.6">V4.6</option>
-          <option value="4.7">V4.7</option>
-        </select>
-      </div>
+    <!-- Background carousel -->
+    <div class="bg-carousel" id="bgCarousel"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="auth-container">
+        <h2 id="form-title" style="color: var(--lol-gold, #c8a84b); font-style: italic; font-weight: 900;">THE AKADAEMIYA</h2>
+        
+        <form id="auth-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit" id="submit-btn">Login</button>
+        </form>
+        
+        <div class="toggle-text">
+            <span id="toggle-text-content">Don't have an account?</span> 
+            <span class="toggle-btn" id="toggle-btn">Register here</span>
+        </div>
+        
+        <div id="message"></div>
     </div>
-  </div>
 
-  <script type="module" src="/src/main.js"></script>
+    <script>
+        const music = document.getElementById("bg-music");
+        const muteBtn = document.getElementById("mute-btn");
+        const iconSound = document.getElementById("icon-sound");
+        const iconMute = document.getElementById("icon-mute");
+
+        // Browsers block autoplay until user interaction — resume on first click
+        document.addEventListener("click", () => {
+            if (music.paused) music.play();
+        }, { once: true });
+
+        muteBtn.addEventListener("click", () => {
+            music.muted = !music.muted;
+            iconSound.style.display = music.muted ? "none" : "block";
+            iconMute.style.display = music.muted ? "block" : "none";
+        });
+    </script>
+
+    <script type="module" src="/src/login.js"></script>
+
+    <script>
+        const images = [
+            "/public/assets/ui/bg/bg.webp",
+        ];
+
+        const carousel = document.getElementById("bgCarousel");
+        const slides = images.map((src, i) => {
+            const div = document.createElement("div");
+            div.className = "bg-slide" + (i === 0 ? " active" : "");
+            div.style.backgroundImage = `url('${src}')`;
+            carousel.appendChild(div);
+            return div;
+        });
+
+        let current = 0;
+        const INTERVAL_MS = 5000;
+
+        setInterval(() => {
+            slides[current].classList.remove("active");
+            current = (current + 1) % slides.length;
+            slides[current].classList.add("active");
+        }, INTERVAL_MS);
+    </script>
+
 </body>
 </html>
