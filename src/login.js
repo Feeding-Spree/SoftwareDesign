@@ -1,3 +1,5 @@
+const API = "https://softwaredesign.onrender.com";
+
 document.addEventListener("DOMContentLoaded", () => {
     const authForm = document.getElementById("auth-form");
     const usernameInput = document.getElementById("username");
@@ -32,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const endpoint = isLoginMode ? "/api/login" : "/api/register";
         
         try {
-            const response = await fetch(endpoint, {
+            const response = await fetch(`${API}${endpoint}`, {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json" 
