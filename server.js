@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const sql = neon(process.env.DATABASE_URL);
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:5173" }));
+app.use(cors());
 app.use(express.json());
 
 // ── Bootstrap: create users table if it doesn't exist ──────────────────────
