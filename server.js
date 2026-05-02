@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const sql = neon(process.env.DATABASE_URL);
 
-app.use(cors());
+app.use(cors({ origin: "https://software-design-gold.vercel.app" }));
 app.use(express.json());
 
 // ── Bootstrap: create users table if it doesn't exist ──────────────────────
